@@ -56,16 +56,18 @@
   display: flex;
   align-items: center;
   padding: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
   gap: 0.5rem;
   max-width: 1400px;
   width: 100%;
   & .header-logo {
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: var(--primary);
   }
 
   & .header-title__container {
     font-size: 1.5rem;
+    font-weight: bold;
     color: var(--text-primary);
   }
 }
@@ -99,6 +101,7 @@
 
 .card:hover {
   box-shadow: var(--shadow-lg);
+  border: 1px solid var(--primary);
   transform: translateY(-5px);
 }
 
@@ -108,7 +111,8 @@
   gap: 0.4rem;
 
   & .day-name {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 500;
     color: var(--text-primary);
   }
 

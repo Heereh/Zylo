@@ -1,6 +1,6 @@
 import CustomButton from "../iu/CustomButton/CustomButton";
 import "./DashboardStyles.css";
-import { Calendar, ChevronRight, User } from "lucide-react";
+import { Calendar, ChevronRight, User, Plus } from "lucide-react";
 import { Link } from "react-router";
 import { useGymStore } from "../../store/GymStore";
 import { createWorkoutDay, getAllWorkouts } from "../../api/workoutService";
@@ -105,9 +105,11 @@ const Dashboard = () => {
       </div>
       <div className="btn-container">
         <CustomButton
-          size="small"
+          size="mediun"
           backgroundColor="primary"
           appearance="outline"
+          icon={<Plus size={"1.50rem"} />}
+          iconPosition="start"
           onClick={handleCreateWorkout}
           disabled={availableDays.length === 0}
         >
