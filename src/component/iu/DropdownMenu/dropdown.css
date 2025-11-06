@@ -1,0 +1,30 @@
+.dropdown {
+  display: inline-block;
+  position: relative;
+
+  & .dropdown-content {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    top: 100%;
+    right: 0;
+    flex-direction: column;
+    min-width: 160px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+  }
+  & .dropdown-content a {
+    color: var(--text);
+    padding: var(--spacing-2);
+    text-decoration: none;
+    display: block;
+    &:hover {
+      background-color: var(--background-opacity);
+    }
+  }
+  &:hover .dropdown-content {
+    display: flex;
+  }
+}
