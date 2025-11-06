@@ -4,7 +4,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import "./modalStyles.css";
 import { type ExerciseTypes } from "../../../store/GymStore";
 
-// Usamos Omit para crear un tipo para el formulario sin el 'id'
 export type ExerciseFormData = Omit<ExerciseTypes, "id">;
 
 interface ExerciseModalProps {
@@ -36,7 +35,6 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({
   );
 
   useEffect(() => {
-    // Reinicia el formulario cuando el modal se abre con nuevos datos iniciales
     if (isOpen) {
       setFormData(initialData || defaultExercise);
     }
