@@ -1,9 +1,9 @@
-import CustomButton from '../CustomButton/CustomButton';
-import { Trash } from 'lucide-react';
-import './CardExericseStyle.css';
-import { useGymStore } from '../../../store/GymStore';
-import { useParams } from 'react-router';
-import { deleteExercise } from '../../../api/workoutService';
+import CustomButton from "../CustomButton/CustomButton";
+import { Trash } from "lucide-react";
+import "./CardExericseStyle.css";
+import { useGymStore } from "../../../store/GymStore";
+import { useParams } from "react-router";
+import { deleteExercise } from "../../../api/workoutService";
 
 interface ExerciseProps {
   key: string;
@@ -39,8 +39,8 @@ const CardExercise = ({
       removeExercise(dayId, exerciseId);
       console.log(`Ejercicio ${exerciseId} eliminado exitosamente`);
     } catch (error) {
-      console.error('Error al eliminar el ejercicio:', error);
-      alert('Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.');
+      console.error("Error al eliminar el ejercicio:", error);
+      alert("Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.");
     }
   };
 
@@ -52,7 +52,7 @@ const CardExercise = ({
           size="small"
           backgroundColor="danger"
           appearance="ghost"
-          onClick={() => handleDeleteExercise(workout?._id || '', exerciseId)}
+          onClick={() => handleDeleteExercise(workout?._id || "", exerciseId)}
         >
           <Trash />
         </CustomButton>
@@ -62,7 +62,7 @@ const CardExercise = ({
           <span className="exercise__name">{name}</span>
           <input
             className="exercise__input btn-card"
-            placeholder="Nombre del ejercicio"
+            placeholder="Cambiar nombre del ejercicio"
             type="text"
           ></input>
         </div>
