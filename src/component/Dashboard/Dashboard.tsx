@@ -1,10 +1,10 @@
 import CustomButton from "../iu/CustomButton/CustomButton";
 import "./DashboardStyles.css";
 import { Calendar, ChevronRight, User, Plus } from "lucide-react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import { useGymStore } from "../../store/GymStore";
 import { createWorkoutDay, getAllWorkouts } from "../../api/workoutService";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAuthStore } from "../../store/GymUserStore";
 
 const allDays = [
@@ -18,8 +18,8 @@ const allDays = [
 ];
 const Dashboard = () => {
   const { addWorkoutDay, setWorkouts } = useGymStore();
+  const { user, setLoading } = useAuthStore();
   const workouts = useGymStore((state) => state.workouts);
-  const user = useAuthStore((state) => state.user?.id);
   const username = useAuthStore((state) => state.user?.username);
 
   const existingDays = workouts.map((w) => w.dayOfWeek);
@@ -43,19 +43,29 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      try {
-        const workoutsFromApi = await getAllWorkouts();
-        setWorkouts(workoutsFromApi);
-      } catch (error) {
-        console.error("Error al obtener las rutinas:", error);
-      }
-    };
-    if (user) {
-      fetchWorkouts();
+  const fetchWorkouts = useCallback(async () => {
+    setLoading(true);
+    try {
+      const workoutsFromApi = await getAllWorkouts();
+      setWorkouts(workoutsFromApi);
+    } catch (error) {
+      console.error("Error al obtener las rutinas:", error);
+    } finally {
+      setLoading(false);
     }
-  }, [user, setWorkouts]);
+  }, [setWorkouts]);
+
+  useEffect(() => {
+    if (user && workouts.length === 0) {
+      fetchWorkouts();
+    } else if (workouts.length > 0) {
+      setLoading(false);
+    }
+  }, [user, workouts.length, fetchWorkouts]);
+
+  if (!user) {
+    return <Navigate to="/login" replace></Navigate>;
+  }
 
   return (
     <section className="dashboard-container">

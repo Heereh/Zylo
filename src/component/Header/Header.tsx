@@ -11,6 +11,7 @@ import {
 import "./header.css";
 
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 const Header = () => {
   const { logout, user } = useAuthStore();
   const navigate = useNavigate();
@@ -36,9 +37,9 @@ const Header = () => {
     <header id="header">
       <div className="header-logo">
         <img className="logo-icon" src="/favicon.ico" alt="logo" />
-        <a className="logo-title" href="/">
+        <Link className="logo-title" to="/">
           Zylo
-        </a>
+        </Link>
       </div>
       <div className="drawer" onBlur={closeOnBlur} tabIndex={0}>
         <span className="icon-drawer" onClick={toggleDrawer}>
