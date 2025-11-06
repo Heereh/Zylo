@@ -1,3 +1,29 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*\\.(?:js|css|map))$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(?:png|jpg|jpeg|gif|ico|svg|webp))$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          // 1 año de caché sin revalidación
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
