@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { loginValidationSchema } from "../../formik/ValidationSchema";
 import { type initialValuesLogin } from "../../formik/initialValues";
 import CustomButton from "../../component/iu/CustomButton/CustomButton";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, Lock, Mail } from "lucide-react";
 import "./signUpStyles.css";
 import { useAuthStore } from "../../store/GymUserStore";
 import { useNavigate } from "react-router";
@@ -59,23 +59,30 @@ const LoginForm = () => {
         <Form className="form">
           <div className="formGroup">
             <label htmlFor="email-login">Email</label>
-            <Field
-              id="email-login"
-              name="email"
-              type="email"
-              placeholder="nombre@ejemplo.com"
-              required
-            />
+            <div className="input-with-icon">
+              <Mail className="input-icon" size={20} />
+              <Field
+                id="email-login"
+                name="email"
+                type="email"
+                placeholder="email@ejemplo.com"
+                required
+              />
+            </div>
             <ErrorMessage name="email" component="div" className="error" />
           </div>
           <div className="formGroup">
             <label htmlFor="password-login">Contraseña</label>
-            <Field
-              id="password-login"
-              name="password"
-              type="password"
-              required
-            />
+            <div className="input-with-icon">
+              <Lock className="input-icon" size={20} />
+              <Field
+                id="password-login"
+                name="password"
+                type="password"
+                placeholder="********"
+                required
+              />
+            </div>
             <ErrorMessage name="password" component="div" className="error" />
           </div>
           <CustomButton type="submit" disabled={isSubmitting} size="mediun">
