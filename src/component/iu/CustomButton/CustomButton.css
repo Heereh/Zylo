@@ -6,7 +6,6 @@
   border: none;
   background: transparent;
   text-align: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +35,7 @@
 
 /** Colors */
 
-.custombutton.default {
+.custom-button.default {
   background-color: var(--default);
   color: var(--text-primary);
 }
