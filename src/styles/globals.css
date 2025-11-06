@@ -4,15 +4,19 @@
   --background-opacity: #4b5563;
   --surface: #374151;
   --border: #e2e8f0;
-  --text-primary: #f2f4fa;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
+  --border-dark: rgba(255, 255, 255, 0.05);
+  --divider: #4b5563;
 
   --color-orange: #fe7f2d;
+  --default: #374151;
   --primary: #2563eb;
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+
+  --card-body-bg: #374151;
+
+  
 
   /* Espaciado */
   --spacing-1: 0.25rem;
@@ -40,7 +44,9 @@
     0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* Fonts */
-  --text-color: #f2f4fa;
+  --text-primary: #f2f4fa;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
   --text-contrast: #94949f;
   --font-family-system:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
