@@ -28,3 +28,12 @@ export interface WorkoutApi extends Omit<WorkoutTypes, "_id"> {
   userId?: string;
   exercises: ExerciseApi[];
 }
+
+export type AlertType = "success" | "error" | "warning";
+
+export interface AlertMessage {
+  id: string;
+  message: string;
+  type: AlertType;
+  duration?: number;
+}
