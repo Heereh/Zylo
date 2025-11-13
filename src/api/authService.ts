@@ -2,6 +2,7 @@ import type {
   registerInitialValues,
   initialValuesLogin,
 } from "../formik/initialValues";
+import { useAuthStore } from "../store/GymUserStore";
 import authApi from "./apiClient";
 import { AxiosError } from "axios";
 
@@ -33,12 +34,12 @@ export const createUser = async (userData: registerInitialValues) => {
     }
     throw new Error("Ocurrió un error inesperado durante el registro.");
   }
-  
 };
 
 export const loginUser = async (userData: initialValuesLogin) => {
   try {
     const response = await authApi.post("/auth/login", userData);
+    useAuthStore.getState().login(response.data.user);
     return response.data;
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
