@@ -1,0 +1,108 @@
+.alert-container {
+  position: fixed;
+  top: 50px;
+  width: fit-content;
+  height: 90vh;
+  z-index: 10;
+}
+
+.alert-content {
+  padding: var(--spacing-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-lg);
+  font-weight: 600;
+  animation: slideDownFadeIn 0.4s ease forwards;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUpFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+.fade-out-up {
+  animation: slideUpFadeOut 0.4s ease forwards;
+}
+
+.alert-message {
+  font-size: 1.15rem;
+  font-weight: bold;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.alert-container__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  margin-left: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.alert-close:hover {
+  opacity: 0.7;
+}
+
+.alert-content.success {
+  background-color: var(--success);
+}
+
+.alert-content.error {
+  background-color: var(--error);
+}
+
+.alert-content.warning {
+  background-color: var(--warning);
+}
+
+.alert-stack {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10000;
+
+  /* Posicionamiento y centrado superior */
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  max-width: 90%; /* Limitar el ancho en pantallas pequeñas */
+  pointer-events: none; /* Permite clics a través del contenedor vacío */
+}
+
+.alert-stack > div {
+  /* Asegura que la alerta individual también pueda ser centrada/reajustada si es necesario */
+  width: 100%;
+  pointer-events: auto; 
+}
