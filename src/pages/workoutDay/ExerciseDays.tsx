@@ -8,10 +8,13 @@ import { useState } from "react";
 import ExerciseModal, {
   type ExerciseFormData,
 } from "../../component/iu/modal/Modal";
+import { useAlertsContext } from "../../context/useContextAlert";
+import AlertDisplay from "../../component/iu/AlertsUI/AlertsUI";
 
 const ExerciseDays = () => {
   const { id } = useParams();
   const { addExercise } = useGymStore();
+  const { addAlert } = useAlertsContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,10 +49,13 @@ const ExerciseDays = () => {
       );
 
       setIsModalOpen(false);
-      alert("¡Ejercicio guardado exitosamente!");
+      addAlert("success", "¡Ejercicio guardado exitosamente!");
     } catch (error) {
       console.error("Error al guardar el ejercicio:", error);
-      alert("Hubo un error al guardar el ejercicio. Inténtalo de nuevo.");
+      addAlert(
+        "error",
+        "Hubo un error al guardar el ejercicio. Inténtalo de nuevo.",
+      );
     }
   };
 
@@ -94,6 +100,7 @@ const ExerciseDays = () => {
       <div>
         <CustomButton>Guardar Rutina</CustomButton>
       </div>
+      <AlertDisplay />
     </div>
   );
 };

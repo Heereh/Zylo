@@ -1,27 +1,30 @@
-import './pages/signUp/signUpStyles.css';
+import "./pages/signUp/signUpStyles.css";
 
-import Dashboard from './component/Dashboard/Dashboard';
-import { Route, BrowserRouter as Router, Routes } from 'react-router';
-import WorkoutDay from './pages/workoutDay/ExerciseDays';
-import LoginPage from './pages/signUp/signUp';
-import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute';
-import { Layout } from './component/Layout/Layout';
+import Dashboard from "./component/Dashboard/Dashboard";
+import { Route, BrowserRouter as Router, Routes } from "react-router";
+import WorkoutDay from "./pages/workoutDay/ExerciseDays";
+import LoginPage from "./pages/signUp/signUp";
+import ProtectedRoute from "./component/ProtectedRoute/ProtectedRoute";
+import { Layout } from "./component/Layout/Layout";
+import { AlertProvider } from "./context/useAlertProvider";
 
 function App() {
   return (
-    <div className="app">
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/workoutDay/:id" element={<WorkoutDay />} />
+    <AlertProvider>
+      <div className="app">
+        <Router>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/workoutDay/:id" element={<WorkoutDay />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      </Router>
-    </div>
+          </Routes>
+        </Router>
+      </div>
+    </AlertProvider>
   );
 }
 

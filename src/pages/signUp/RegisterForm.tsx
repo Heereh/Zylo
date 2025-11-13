@@ -1,38 +1,54 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { registerValidationSchema } from '../../formik/ValidationSchema';
-import { type registerInitialValues } from '../../formik/initialValues';
-import CustomButton from '../../component/iu/CustomButton/CustomButton';
-import './signUpStyles.css';
-import { LoaderCircle } from 'lucide-react';
-import { useAuthStore } from '../../store/GymUserStore';
-import { useNavigate } from 'react-router';
-import { createUser } from '../../api/authService';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { registerValidationSchema } from "../../formik/ValidationSchema";
+import { type registerInitialValues } from "../../formik/initialValues";
+import CustomButton from "../../component/iu/CustomButton/CustomButton";
+import "./signUpStyles.css";
+import { LoaderCircle } from "lucide-react";
+import { useAuthStore } from "../../store/GymUserStore";
+import { useNavigate } from "react-router";
+import { createUser } from "../../api/authService";
+import { useAlertsContext } from "../../context/useContextAlert";
 
 const initialValues: registerInitialValues = {
-  username: '',
-  email: '',
-  password: '',
+  username: "",
+  email: "",
+  password: "",
 };
 
 const RegisterForm = () => {
   const { login, setLoading } = useAuthStore();
   const navigate = useNavigate();
+  const { addAlert } = useAlertsContext();
 
-  const handleSubmit = async (values: registerInitialValues, { setSubmitting, setErrors }: { setSubmitting: (isSubmitting: boolean) => void; setErrors: (errors: object) => void; }) => {
+  const handleSubmit = async (
+    values: registerInitialValues,
+    {
+      setSubmitting,
+      setErrors,
+    }: {
+      setSubmitting: (isSubmitting: boolean) => void;
+      setErrors: (errors: object) => void;
+    },
+  ) => {
     try {
       setLoading(true);
       const userData = await createUser(values);
       login(userData);
-      navigate('/');
+      addAlert(
+        "success",
+        `¡Bienvenido, ${userData.user.username}! Redirigiendo...`,
+      );
+      navigate("/");
     } catch (error: unknown) {
-      if (error && typeof error === 'object' && 'message' in error) {
-        // Ejemplo: si el usuario ya existe (código 409)
-        setErrors({ email: 'Este email ya está en uso.' });
-      } else {
-        alert(
-          'Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.',
-        );
+      let errorMessage =
+        "Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.";
+      let emailError = "";
+      if (error && typeof error === "object" && "message" in error) {
+        errorMessage = error.message as string;
+        emailError = "Este email ya está en uso.";
       }
+      addAlert("error", errorMessage);
+      setErrors({ email: emailError || "Error de registro" });
     } finally {
       setSubmitting(false);
       setLoading(false);

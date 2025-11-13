@@ -4,6 +4,7 @@ import "./CardExericseStyle.css";
 import { useGymStore } from "../../../store/GymStore";
 import { useParams } from "react-router";
 import { deleteExercise } from "../../../api/workoutService";
+import { useAlertsContext } from "../../../context/useContextAlert";
 
 interface ExerciseProps {
   key: string;
@@ -31,16 +32,19 @@ const CardExercise = ({
   const workout = useGymStore((state) =>
     state.workouts.find((w) => w._id === id),
   );
+  const { addAlert } = useAlertsContext();
 
   const handleDeleteExercise = async (dayId: string, exerciseId: string) => {
     if (!dayId) return;
     try {
       await deleteExercise(dayId, exerciseId);
       removeExercise(dayId, exerciseId);
-      console.log(`Ejercicio ${exerciseId} eliminado exitosamente`);
+      addAlert("success", `Ejercicio eliminado exitosamente`);
     } catch (error) {
-      console.error("Error al eliminar el ejercicio:", error);
-      alert("Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.");
+      addAlert(
+        "success",
+        "Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.",
+      );
     }
   };
 

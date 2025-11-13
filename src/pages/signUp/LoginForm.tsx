@@ -7,7 +7,7 @@ import "./signUpStyles.css";
 import { useAuthStore } from "../../store/GymUserStore";
 import { useNavigate } from "react-router";
 import { loginUser } from "../../api/authService";
-
+import { useAlertsContext } from "../../context/useContextAlert";
 const initialValues: initialValuesLogin = {
   email: "",
   password: "",
@@ -18,6 +18,7 @@ const initialValues: initialValuesLogin = {
 const LoginForm = () => {
   const { login, setLoading } = useAuthStore();
   const navigate = useNavigate();
+  const { addAlert } = useAlertsContext();
 
   const handleSubmit = async (
     values: initialValuesLogin,
@@ -35,14 +36,15 @@ const LoginForm = () => {
       login({ user: userData.user, token: userData.token });
       navigate("/");
     } catch (error: unknown) {
+      let errorMessage =
+        "Hubo un error al iniciar sesión. Por favor, inténtalo de nuevo.";
+      let emailError = "";
       if (error && typeof error === "object" && "message" in error) {
-        alert(error.message);
-        setErrors({ email: "Credenciales incorrectas" });
-      } else {
-        alert(
-          "Hubo un error al iniciar sesión. Por favor, inténtalo de nuevo.",
-        );
+        errorMessage = error.message as string;
+        emailError = "Credenciales incorrectas";
       }
+      addAlert("error", errorMessage);
+      setErrors({ email: emailError || "Error de autenticación" });
     } finally {
       setSubmitting(false);
       setLoading(false);

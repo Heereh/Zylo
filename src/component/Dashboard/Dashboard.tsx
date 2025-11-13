@@ -6,6 +6,7 @@ import { useGymStore } from "../../store/GymStore";
 import { createWorkoutDay, getAllWorkouts } from "../../api/workoutService";
 import { useEffect } from "react";
 import { useAuthStore } from "../../store/GymUserStore";
+import { useAlertsContext } from "../../context/useContextAlert";
 
 const allDays = [
   { key: "Lunes", name: "Lunes" },
@@ -18,10 +19,11 @@ const allDays = [
 ];
 const Dashboard = () => {
   const { addWorkoutDay, setWorkouts } = useGymStore();
+  const { isFreshLogin, resetFreshLogin } = useAuthStore();
+  const { addAlert } = useAlertsContext();
   const workouts = useGymStore((state) => state.workouts);
   const user = useAuthStore((state) => state.user?.id);
   const username = useAuthStore((state) => state.user?.username);
-
   const existingDays = workouts.map((w) => w.dayOfWeek);
   const availableDays = allDays.filter(
     (day) => !existingDays.includes(day.key),
@@ -36,10 +38,14 @@ const Dashboard = () => {
     try {
       const newWorkout = await createWorkoutDay(nextDay.key);
       addWorkoutDay(newWorkout);
+      addAlert("success", `Rutina creada para ${nextDay.name}`);
       /* navigate(`/workoutDay/`); */
     } catch (error) {
       console.error("Error al crear el día:", error);
-      alert("Hubo un error al crear el día. Por favor, inténtalo de nuevo.");
+      addAlert(
+        "error",
+        "Hubo un error al crear el día. Por favor, inténtalo de nuevo.",
+      );
     }
   };
 
@@ -48,14 +54,22 @@ const Dashboard = () => {
       try {
         const workoutsFromApi = await getAllWorkouts();
         setWorkouts(workoutsFromApi);
+        addAlert("success", "Rutinas obtenidas con éxito");
+        if (isFreshLogin) {
+          resetFreshLogin();
+        }
       } catch (error) {
         console.error("Error al obtener las rutinas:", error);
+        addAlert(
+          "error",
+          "Hubo un error al obtener las rutinas. Por favor, inténtalo de nuevo.",
+        );
       }
     };
-    if (user) {
+    if (user && workouts.length === 0) {
       fetchWorkouts();
     }
-  }, [user, setWorkouts]);
+  }, [user, workouts, setWorkouts, isFreshLogin, resetFreshLogin, addAlert]);
 
   return (
     <section className="dashboard-container">
@@ -116,6 +130,14 @@ const Dashboard = () => {
           Agregar Día
         </CustomButton>
       </div>
+      <button
+        onClick={() =>
+          addAlert("success", "¡Autenticación completada con éxito!", 4000)
+        }
+        className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition duration-150 font-semibold"
+      >
+        Success (4s)
+      </button>
     </section>
   );
 };
