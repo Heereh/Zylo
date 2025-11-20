@@ -33,7 +33,6 @@ export const createUser = async (userData: registerInitialValues) => {
     }
     throw new Error("Ocurrió un error inesperado durante el registro.");
   }
-  
 };
 
 export const loginUser = async (userData: initialValuesLogin) => {

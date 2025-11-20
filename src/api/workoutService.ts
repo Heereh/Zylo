@@ -1,4 +1,4 @@
-import type { WorkoutTypes } from "../types";
+import type { WorkoutTypes } from "@types";
 import handleApiError from "../utils/handleApiError";
 import { parseWorkoutData } from "../utils/workoutTransformer";
 import authApi from "./apiClient";
