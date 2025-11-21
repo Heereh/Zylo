@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useOpen } from '../../../hook/useOpen';
 
 export const DropdownMenu = () => {
