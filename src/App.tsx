@@ -8,21 +8,30 @@ import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute';
 import { Layout } from './component/Layout/Layout';
 
 function App() {
-  return (
-    <div className="app">
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/workoutDay/:id" element={<WorkoutDay />} />
-            </Route>
-          </Route>
-        </Routes>
-      </Router>
-    </div>
-  );
+	return (
+		<div className="app">
+			<Router>
+				<Routes>
+					<Route
+						path="/login"
+						element={<LoginPage />}
+					/>
+					<Route element={<ProtectedRoute />}>
+						<Route element={<Layout />}>
+							<Route
+								path="/"
+								element={<Dashboard />}
+							/>
+							<Route
+								path="/workoutDay/:id"
+								element={<WorkoutDay />}
+							/>
+						</Route>
+					</Route>
+				</Routes>
+			</Router>
+		</div>
+	);
 }
 
 export default App;

@@ -28,3 +28,6 @@ export interface WorkoutApi extends Omit<WorkoutTypes, "_id"> {
   userId?: string;
   exercises: ExerciseApi[];
 }
+
+export type ExerciseFormData = Omit<ExerciseTypes, "id">;
+

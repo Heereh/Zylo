@@ -1,4 +1,9 @@
-import type { ExerciseApi, ExerciseTypes, WorkoutApi, WorkoutTypes } from "../types";
+import type {
+  ExerciseApi,
+  ExerciseTypes,
+  WorkoutApi,
+  WorkoutTypes,
+} from "../types";
 
 type WorkoutDataIn = WorkoutApi | WorkoutApi[] | any;
 type WorkoutDataOut = WorkoutTypes | WorkoutTypes[] | any;
@@ -33,9 +38,9 @@ export const parseWorkoutData = (data: WorkoutDataIn): WorkoutDataOut => {
 
     // Si hay ejercicios, procesa cada uno.
     if (newData.exercises && Array.isArray(newData.exercises)) {
-      newData.exercises = newData.exercises.map((exercise:ExerciseApi) => {
+      newData.exercises = newData.exercises.map((exercise: ExerciseApi) => {
         // En los ejercicios, también puedes tener ObjectIds
-        const newExercise = { ...exercise }  as ExerciseTypes;
+        const newExercise = { ...exercise } as ExerciseTypes;
         if ("_id" in newExercise) {
           newExercise._id = newExercise._id.toString();
           delete (newExercise as any)._id;

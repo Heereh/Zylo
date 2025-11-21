@@ -1,11 +1,10 @@
-import axios from 'axios';
-import { useAuthStore } from '../store/GymUserStore';
-
+import axios from "axios";
+import { useAuthStore } from "../store/GymUserStore";
 
 const authApi = axios.create({
   baseURL: import.meta.env.VITE_API_URL + `/api/v1`,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -29,8 +28,8 @@ authApi.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('accessToken');
-      window.location.href = '/login';
+      localStorage.removeItem("accessToken");
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   },

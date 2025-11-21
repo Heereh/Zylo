@@ -1,96 +1,102 @@
-import { useState } from "react";
-import { useAuthStore } from "../../store/GymUserStore";
-import CustomButton from "../iu/CustomButton/CustomButton";
+import { useState } from 'react';
+import { useAuthStore } from '@store/GymUserStore';
+import { CustomButton } from '@component-IU';
 import {
-  CircleUser,
-  Settings,
-  LogOut,
-  ChevronsDown,
-  ChevronsUp,
-} from "lucide-react";
-import "./header.css";
+	CircleUser,
+	Settings,
+	LogOut,
+	ChevronsDown,
+	ChevronsUp,
+} from 'lucide-react';
+import './header.css';
 
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
+import { useOpen } from '../../hook/useOpen';
 const Header = () => {
-  const { logout, user } = useAuthStore();
-  const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+	const { logout, user } = useAuthStore();
+	const navigate = useNavigate();
+	const { CloseUI, OpenUI, isOpen } = useOpen();
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
+	const closeOnBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+		// Solo cierra si realmente el foco salió del componente principal
+		if (!e.currentTarget?.contains(e.relatedTarget) && isOpen) {
+			CloseUI();
+		}
+	};
 
-  const closeOnBlur = (e: React.FocusEvent<HTMLDivElement>) => {
-    // Solo cierra si realmente el foco salió del componente principal
-    if (!e.currentTarget?.contains(e.relatedTarget) && isOpen) {
-      setIsOpen(false);
-    }
-  };
+	const handleLogout = () => {
+		logout();
+		navigate('/login');
+	};
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+	return (
+		<header id="header">
+			<div className="header-logo">
+				<img
+					className="logo-icon"
+					src="/favicon.ico"
+					alt="logo"
+				/>
+				<Link
+					className="logo-title"
+					to="/">
+					Zylo
+				</Link>
+			</div>
+			<div
+				className="drawer"
+				onBlur={closeOnBlur}
+				tabIndex={0}>
+				<span
+					className="icon-drawer"
+					onClick={() => OpenUI()}>
+					{isOpen ? <ChevronsDown /> : <ChevronsUp />}
+				</span>
 
-  return (
-    <header id="header">
-      <div className="header-logo">
-        <img className="logo-icon" src="/favicon.ico" alt="logo" />
-        <Link className="logo-title" to="/">
-          Zylo
-        </Link>
-      </div>
-      <div className="drawer" onBlur={closeOnBlur} tabIndex={0}>
-        <span className="icon-drawer" onClick={toggleDrawer}>
-          {isOpen ? <ChevronsDown /> : <ChevronsUp />}
-        </span>
+				<div className={`drawer-content ${isOpen ? 'is-open' : ''}`}>
+					<div className="drawer-content__top">
+						<div className="user-info">
+							<span className="user-avatar">
+								<CircleUser size={20} />
+							</span>
+							<div className="user">
+								<span className="user-name">{user?.username}</span>
+								<span className="user-email">{user?.email}</span>
+							</div>
+						</div>
+					</div>
 
-        <div className={`drawer-content ${isOpen ? "is-open" : ""}`}>
-          <div className="drawer-content__top">
-            <div className="user-info">
-              <span className="user-avatar">
-                <CircleUser size={20} />
-              </span>
-              <div className="user">
-                <span className="user-name">{user?.username}</span>
-                <span className="user-email">{user?.email}</span>
-              </div>
-            </div>
-          </div>
+					<div className="divider"></div>
 
-          <div className="divider"></div>
+					<div className="drawer-content__bottom">
+						<div className="btn-drawer__container">
+							<div className="btn-drawer__items">
+								<CustomButton
+									icon={<Settings size="20px" />}
+									iconPosition="end"
+									size="small"
+									appearance="outline"
+									backgroundColor="secondary">
+									Configuración
+								</CustomButton>
 
-          <div className="drawer-content__bottom">
-            <div className="btn-drawer__container">
-              <div className="btn-drawer__items">
-                <CustomButton
-                  icon={<Settings size="20px" />}
-                  iconPosition="end"
-                  size="small"
-                  appearance="outline"
-                  backgroundColor="secondary"
-                >
-                  Configuración
-                </CustomButton>
-
-                <CustomButton
-                  icon={<LogOut size="20px" />}
-                  iconPosition="end"
-                  size="small"
-                  appearance="ghost"
-                  backgroundColor="danger"
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
-                </CustomButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
+								<CustomButton
+									icon={<LogOut size="20px" />}
+									iconPosition="end"
+									size="small"
+									appearance="ghost"
+									backgroundColor="danger"
+									onClick={handleLogout}>
+									Cerrar sesión
+								</CustomButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	);
 };
 
 export default Header;
