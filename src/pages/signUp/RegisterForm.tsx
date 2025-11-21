@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { registerValidationSchema } from '../../formik/ValidationSchema';
 import { type registerInitialValues } from '../../formik/initialValues';
 import { CustomButton } from '@component-IU';
-import { createUser } from "../../api/authService"
+import { createUser } from '../../api/authService';
 import { LoaderCircle, Lock, Mail, User } from 'lucide-react';
 import './signUpStyles.css';
 import { useAuthForm } from '../../hook/useAuthForm';
@@ -14,7 +14,7 @@ const initialValues: registerInitialValues = {
 };
 
 const RegisterForm = () => {
-const {handleSubmit} = useAuthForm(createUser)
+	const { handleSubmit } = useAuthForm(createUser);
 
 	return (
 		<Formik

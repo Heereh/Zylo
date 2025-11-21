@@ -19,7 +19,7 @@ const allDays = [
 const Dashboard = () => {
 	const { addWorkoutDay } = useGymStore();
 	const { user } = useAuthStore();
-	const {workouts} = useWorkoutData()
+	const { workouts } = useWorkoutData();
 	const username = useAuthStore((state) => state.user?.username);
 
 	const existingDays = workouts.map((w) => w.dayOfWeek);

@@ -12,19 +12,16 @@ import './header.css';
 
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router';
+import { useOpen } from '../../hook/useOpen';
 const Header = () => {
 	const { logout, user } = useAuthStore();
 	const navigate = useNavigate();
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleDrawer = () => {
-		setIsOpen(!isOpen);
-	};
+	const { CloseUI, OpenUI, isOpen } = useOpen();
 
 	const closeOnBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 		// Solo cierra si realmente el foco salió del componente principal
 		if (!e.currentTarget?.contains(e.relatedTarget) && isOpen) {
-			setIsOpen(false);
+			CloseUI();
 		}
 	};
 
@@ -53,7 +50,7 @@ const Header = () => {
 				tabIndex={0}>
 				<span
 					className="icon-drawer"
-					onClick={toggleDrawer}>
+					onClick={() => OpenUI()}>
 					{isOpen ? <ChevronsDown /> : <ChevronsUp />}
 				</span>
 

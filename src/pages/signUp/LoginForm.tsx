@@ -15,8 +15,8 @@ const initialValues: initialValuesLogin = {
 };
 
 const LoginForm = () => {
-	const {handleSubmit} = useAuthForm(loginUser)
-	
+	const { handleSubmit } = useAuthForm(loginUser);
+
 	return (
 		<Formik
 			initialValues={initialValues}

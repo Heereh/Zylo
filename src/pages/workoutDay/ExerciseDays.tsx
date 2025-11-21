@@ -7,11 +7,11 @@ import { useExerciseForm } from '../../hook/useExerciseForm';
 
 const ExerciseDays = () => {
 	const { id } = useParams();
-	const {OpenUI, CloseUI, isOpen} = useOpen()
+	const { OpenUI, CloseUI, isOpen } = useOpen();
 	const workout = useGymStore((state) =>
 		state.workouts.find((w) => w._id === id),
-);
-	const {saveExercise} = useExerciseForm(workout)
+	);
+	const { saveExercise } = useExerciseForm(workout);
 
 	if (!workout) {
 		return <div>Cargando rutina o Dia no encontrado</div>;
@@ -20,9 +20,9 @@ const ExerciseDays = () => {
 	const EXERCISE_LIMIT = 8;
 	const canAddExercise = (workout?.exercises.length || 0) >= EXERCISE_LIMIT;
 
-	const handleSaveExercise = async (data:any) => {
-		const ok = await saveExercise(data)
-		if(ok) CloseUI()
+	const handleSaveExercise = async (data: any) => {
+		const ok = await saveExercise(data);
+		if (ok) CloseUI();
 	};
 
 	return (
