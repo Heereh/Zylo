@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CustomButton } from '@component-IU';
-import { type ExerciseFormData } from '../../../types.d';
+import  {  type ExerciseFormData } from '@types';
 import { X } from 'lucide-react';
 import './modalStyles.css';
 

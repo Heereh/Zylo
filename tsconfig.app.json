@@ -12,7 +12,7 @@
       "@store/*": ["./src/store/*"],
       "@component/*": ["./src/component/*"],
       "@component-IU": ["./src/component/IU"],
-      "@types": ["./src/types"],
+      "@types": ["./src/types.d.ts"],
     },
 
     /* Bundler mode */

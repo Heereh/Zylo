@@ -11,7 +11,7 @@ export default defineConfig({
       "@store": path.resolve(__dirname, "src/store"),
       "@component": path.resolve(__dirname, "src/component"),
       "@component-IU": path.resolve(__dirname, "src/component/IU"),
-      "@types": path.resolve(__dirname, "src/types"),
+      "@types": path.resolve(__dirname, "src/types.d.ts"),
     },
   },
 });

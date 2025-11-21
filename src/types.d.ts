@@ -30,4 +30,3 @@ export interface WorkoutApi extends Omit<WorkoutTypes, "_id"> {
 }
 
 export type ExerciseFormData = Omit<ExerciseTypes, "id">;
-
