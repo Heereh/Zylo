@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--surface);
+  background-color: var(--default);
   box-shadow: var(--shadow-lg);
   width: 100vw;
   padding: var(--spacing-3);
@@ -41,7 +41,7 @@
   height: auto;
   gap: 16px;
   padding: var(--spacing-4);
-  background-color: var(--surface);
+  background-color: var(--background-opacity);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-dark);
@@ -100,7 +100,7 @@
 }
 
 .user-email {
-  color: var(--text-secondary);
+  color: var(--text-contrast);
   font-size: 0.8rem;
   white-space: nowrap;
   overflow: hidden;

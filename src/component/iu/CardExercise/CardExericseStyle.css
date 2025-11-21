@@ -1,4 +1,4 @@
-.workout__card {
+.exercise__card {
   max-width: 480px;
   width: 100%;
   border: 1px solid var(--border-dark);
@@ -12,28 +12,27 @@
   overflow: hidden;
 }
 
-.workout__card:hover {
+.exercise__card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
-.workout__card-header {
+.exercise__card-header {
   padding: var(--spacing-4);
   border-bottom: 1px solid var(--border-dark);
-
-  background-color: var(--surface);
+  background-color: var(--background-opacity);  
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  & .workout__card-title {
+  & .exercise__card-title {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);
   }
 }
 
-.workout__card-body {
+.exercise__card-body {
   padding: var(--spacing-4);
   display: flex;
   flex-direction: column;
@@ -109,7 +108,7 @@
   max-width: 4rem;
 }
 
-.workout__card-note {
+.exercise__card-note {
   display: flex;
   flex-direction: column;
   justify-content: center;

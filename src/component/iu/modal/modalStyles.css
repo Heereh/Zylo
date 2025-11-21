@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--text-contrast);
     border-radius: 50%;
     transition: all 0.2s;
 }
@@ -88,7 +88,7 @@
 .form-group label {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--text-contrast);
     margin-bottom: 2px;
 }
 

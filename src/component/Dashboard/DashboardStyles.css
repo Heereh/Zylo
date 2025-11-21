@@ -11,7 +11,7 @@
 }
 
 .dashboard-toast {
-  background-color: var(--surface);
+  background-color: var(--background-opacity);
   width: 100%;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
@@ -24,7 +24,7 @@
     height: 100%;
     padding: var(--spacing-6);
     border-radius: var(--radius-lg);
-    background-color: var(--surface);
+    background-color: var( --background-opacity);
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
   }
@@ -37,7 +37,7 @@
     font-weight: 500;
 
     & #username {
-      color: var(--color-orange);
+      color: var(--surface);
     }
 
     & svg {
@@ -47,7 +47,7 @@
 
   & .user-toast-text {
     font-size: 0.92rem;
-    color: var(--text-muted);
+    color: var(--text-contrast);
     font-weight: 400;
   }
 }
@@ -55,8 +55,7 @@
 .dashboard-header {
   display: flex;
   align-items: center;
-  padding: var(--spacing-4);
-  margin-bottom: var(--spacing-4);
+  padding: 1rem 1rem 0 0;
   gap: 0.5rem;
   max-width: 1400px;
   width: 100%;
@@ -87,7 +86,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--surface);
+  background-color: var(--background-opacity);
   border-radius: var(--radius-lg);
   padding: var(--spacing-6);
   width: 100%;
@@ -103,6 +102,10 @@
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--primary);
   transform: translateY(-5px);
+
+  & .icon-container {
+    color: var(--primary);
+  }
 }
 
 .card-header {
@@ -118,7 +121,7 @@
 
   & .card-description {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: var(--text-contrast);
   }
 }
 

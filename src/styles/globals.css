@@ -1,22 +1,25 @@
 :root {
   /* Colores */
   --background: #1f2937;
-  --background-opacity: #4b5563;
-  --surface: #374151;
-  --border: #e2e8f0;
-  --border-dark: rgba(255, 255, 255, 0.05);
-  --divider: #4b5563;
-
-  --color-orange: #fe7f2d;
+  --background-opacity: #2d3748; 
   --default: #374151;
-  --primary: #2563eb;
+  --primary: #7badec;
+  --secondary: #8f1914;
+  --surface: #dfc320;
+  --text-primary: #d8e4f9;
+  --text-contrast: #94949f;
+  --danger: #dc3545;
+
+
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
+  --divider: #4b5563;
+  --border: #e2e8f0;
+  --border-dark: rgba(255, 255, 255, 0.05);
 
   --card-body-bg: #374151;
   --icon-muted: #94a3b8;
-  
 
   /* Espaciado */
   --spacing-1: 0.25rem;
@@ -44,10 +47,6 @@
     0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   /* Fonts */
-  --text-primary: #f2f4fa;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
-  --text-contrast: #94949f;
   --font-family-system:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Helvetica Neue", sans-serif;
