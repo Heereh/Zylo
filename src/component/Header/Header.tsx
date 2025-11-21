@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAuthStore } from '@store/GymUserStore';
 import { CustomButton } from '@component-IU';
 import {
@@ -22,6 +21,14 @@ const Header = () => {
 		// Solo cierra si realmente el foco salió del componente principal
 		if (!e.currentTarget?.contains(e.relatedTarget) && isOpen) {
 			CloseUI();
+		}
+	};
+
+	const toggleDrawer = () => {
+		if (isOpen) {
+			CloseUI();
+		} else {
+			OpenUI();
 		}
 	};
 
@@ -50,7 +57,7 @@ const Header = () => {
 				tabIndex={0}>
 				<span
 					className="icon-drawer"
-					onClick={() => OpenUI()}>
+					onClick={toggleDrawer}>
 					{isOpen ? <ChevronsDown /> : <ChevronsUp />}
 				</span>
 

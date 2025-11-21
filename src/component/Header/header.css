@@ -5,8 +5,9 @@
   justify-content: space-between;
   background-color: var(--default);
   box-shadow: var(--shadow-lg);
-  width: 100vw;
-  padding: var(--spacing-3);
+  max-width: 1400px;
+  width: 100%;
+  padding: var(--spacing-4);
 }
 
 .header-logo {

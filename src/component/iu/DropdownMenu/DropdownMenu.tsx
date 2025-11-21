@@ -5,14 +5,21 @@ export const DropdownMenu = () => {
 	const { isOpen, OpenUI, CloseUI } = useOpen();
 
 	const toggleDropdown = () => {
-		OpenUI();
+		if (isOpen) {
+			CloseUI();
+		} else {
+			OpenUI();
+		}
 	};
 
 	return (
 		<div className="dropdown">
 			<button
 				className="dropdown-toggle"
-				onClick={toggleDropdown}>
+				onClick={toggleDropdown}
+				onBlur={CloseUI}
+				
+				>
 				Dropdown
 			</button>
 			{isOpen && (

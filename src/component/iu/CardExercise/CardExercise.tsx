@@ -46,10 +46,10 @@ const CardExercise = ({
 
 	return (
 		<div
-			className="workout__card"
+			className="exercise__card"
 			key={key}>
-			<div className="workout__card-header">
-				<h2 className="workout__card-title">Ejercicio {exerciseNumber}</h2>
+			<div className="exercise__card-header">
+				<h2 className="exercise__card-title">Ejercicio {exerciseNumber}</h2>
 				<CustomButton
 					size="small"
 					backgroundColor="danger"
@@ -58,7 +58,7 @@ const CardExercise = ({
 					<Trash />
 				</CustomButton>
 			</div>
-			<div className="workout__card-body">
+			<div className="exercise__card-body">
 				<div className="exercise__name-container">
 					<span className="exercise__name">{name}</span>
 					<input
@@ -110,7 +110,7 @@ const CardExercise = ({
 						/>
 					</div>
 				</div>
-				<div className="workout__card-note">
+				<div className="exercise__card-note">
 					<span className="card-note">Nota</span>
 					<input
 						className="card-note-input btn-card"

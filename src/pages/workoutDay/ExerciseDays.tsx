@@ -29,6 +29,15 @@ const ExerciseDays = () => {
 		<div className="workout__container">
 			<div className="workout__title-container">
 				<h2 className="workout__title">{workout?.dayOfWeek}</h2>
+				<CustomButton
+          size="small"
+          backgroundColor="success"
+          appearance="solid"
+          onClick={() => OpenUI()}
+          disabled={canAddExercise}
+        >
+          Agregar ejercicio
+        </CustomButton>
 			</div>
 			<div className="workout__container-body">
 				{workout?.exercises.length === 0 ? (
@@ -46,22 +55,11 @@ const ExerciseDays = () => {
 							note={exercise.notes}></CardExercise>
 					))
 				)}
-				<CustomButton
-					size="small"
-					backgroundColor="primary"
-					appearance="outline"
-					onClick={() => OpenUI()}
-					disabled={canAddExercise}>
-					Agregar ejercicio
-				</CustomButton>
 				<Modal
 					isOpen={isOpen}
 					onClose={() => CloseUI()}
 					onSave={handleSaveExercise}
 					title="Crear Ejercicio"></Modal>
-			</div>
-			<div>
-				<CustomButton>Guardar Rutina</CustomButton>
 			</div>
 		</div>
 	);

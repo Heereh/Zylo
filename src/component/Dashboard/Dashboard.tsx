@@ -62,8 +62,21 @@ const Dashboard = () => {
 					</div>
 					<div className="user-toast-text">
 						<span>
-							Planifica y rastrea tus rutinas de entrenamiento semanales
+							Planifica, rastrea y optimiza tus rutinas de entrenamiento semanales. Hoy es un gran día para entrenar.
 						</span>
+						<div className="btn-container">
+        <CustomButton
+          size="small"
+          backgroundColor="primary"
+          appearance="solid"
+          icon={<Plus size={"1.25rem"} />}
+          iconPosition="start"
+          onClick={handleCreateWorkout}
+          disabled={availableDays.length === 0}
+        >
+          Agregar Día
+        </CustomButton>
+      </div>
 					</div>
 				</div>
 			</div>
@@ -94,18 +107,6 @@ const Dashboard = () => {
 				) : (
 					<p>Crea tu primera rutina haciendo click en 'Agregar Día'</p>
 				)}
-			</div>
-			<div className="btn-container">
-				<CustomButton
-					size="mediun"
-					backgroundColor="primary"
-					appearance="outline"
-					icon={<Plus size={'1.50rem'} />}
-					iconPosition="start"
-					onClick={handleCreateWorkout}
-					disabled={availableDays.length === 0}>
-					Agregar Día
-				</CustomButton>
 			</div>
 		</section>
 	);
