@@ -1,5 +1,5 @@
 import { useAuthStore } from '@store/GymUserStore';
-import { CustomButton } from '@component-IU';
+import { CustomButton } from '@component-UI';
 import {
 	CircleUser,
 	Settings,

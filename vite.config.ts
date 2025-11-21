@@ -10,7 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
       "@store": path.resolve(__dirname, "src/store"),
       "@component": path.resolve(__dirname, "src/component"),
-      "@component-IU": path.resolve(__dirname, "src/component/IU"),
+      "@component-UI": path.resolve(__dirname, "src/component/UI"),
       "@types": path.resolve(__dirname, "src/types.d.ts"),
     },
   },

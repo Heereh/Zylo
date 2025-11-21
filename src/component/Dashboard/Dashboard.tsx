@@ -2,7 +2,7 @@ import { Link, Navigate } from 'react-router';
 import { useGymStore } from '@store/GymStore';
 import { createWorkoutDay } from '../../api/workoutService';
 import { useAuthStore } from '@store/GymUserStore';
-import { CustomButton } from '@component-IU';
+import { CustomButton } from '@component-UI';
 import { Calendar, ChevronRight, User, Plus } from 'lucide-react';
 import { useWorkoutData } from '../../hook/useWorkoutData';
 import './DashboardStyles.css';

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useGymStore } from '@store/GymStore';
-import { CardExercise, CustomButton, Modal } from '@component-IU';
+import { CardExercise, CustomButton, Modal } from '@component-UI';
 import './ExerciseDaysStyles.css';
 import { useOpen } from '../../hook/useOpen';
 import { useExerciseForm } from '../../hook/useExerciseForm';

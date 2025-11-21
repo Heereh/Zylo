@@ -11,7 +11,7 @@
       "@": ["./src"],
       "@store/*": ["./src/store/*"],
       "@component/*": ["./src/component/*"],
-      "@component-IU": ["./src/component/IU"],
+      "@component-UI": ["./src/component/UI"],
       "@types": ["./src/types.d.ts"],
     },
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import { LoadingSpinner } from '@component-IU';
+import { LoadingSpinner } from '@component-UI';
 import { useAuthStore } from '@store/GymUserStore';
 import { Dumbbell } from 'lucide-react';
 import './signUpStyles.css';

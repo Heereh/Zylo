@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { registerValidationSchema } from '../../formik/ValidationSchema';
 import { type registerInitialValues } from '../../formik/initialValues';
-import { CustomButton } from '@component-IU';
+import { CustomButton } from '@component-UI';
 import { createUser } from '../../api/authService';
 import { LoaderCircle, Lock, Mail, User } from 'lucide-react';
 import './signUpStyles.css';
