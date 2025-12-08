@@ -1,143 +1,152 @@
 .exercise__card {
-  max-width: 480px;
-  width: 100%;
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius-lg);
-  background: var(--card-body-bg);
-  box-shadow: var(--shadow-lg);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-  cursor: default;
-  overflow: hidden;
+	max-width: 480px;
+	width: 100%;
+	border: 1px solid var(--border-dark);
+	border-radius: var(--radius-lg);
+	background-color: var(--background-opacity);
+	box-shadow: var(--shadow-lg);
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	cursor: default;
+	overflow: hidden;
 }
 
 .exercise__card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
 }
 
 .exercise__card-header {
-  padding: var(--spacing-4);
-  border-bottom: 1px solid var(--border-dark);
-  background-color: var(--background-opacity);  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	padding: var(--spacing-3);
+	border-bottom: 1px solid var(--border-dark);
+	background-color: var(--background-opacity);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-  & .exercise__card-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
+	& .exercise__card-title {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+	}
 }
 
 .exercise__card-body {
-  padding: var(--spacing-4);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+	padding: var(--spacing-2);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 
-  & .exercise__name-container {
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    gap: 10px;
-    flex-direction: column;
-
-    & .exercise__name {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-  }
+	& h5 {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin-bottom: 10px;
+	}
 }
 
-/**
- * Exercise input styles
- */
+.exercise__card-sets-container {
+}
+
+.exercise__card-set-number {
+	width: 1.5rem;
+	height: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: #fff;
+	flex-shrink: 0;
+	background-color: var(--primary);
+	display: none;
+}
+
+.exercise__card-set-card {
+	/*padding: var(--spacing-2);*/
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	background-color: var();
+}
+.exercise__card_content {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	flex-grow: 1;
+}
+
+.exercise__card_input-group {
+	display: flex;
+	flex-direction: column;
+
+	& .exercise__card-label {
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--text-primary);
+		margin-bottom: 0.25rem;
+	}
+	& .exercise__card-input {
+		width: 100%;
+		padding: var(--spacing-2);
+		border: 1px solid var(--border-dark);
+		border-radius: var(--radius);
+		background-color: var(--input-bg);
+		color: var(--text-primary);
+		font-size: 1rem;
+		transition:
+			border-color 0.2s,
+			box-shadow 0.2s;
+	}
+}
 
 .btn-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-dark);
-  padding: var(--spacing-4);
-  outline: none;
-  color: var(--text-contrast);
-  font-weight: 500;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+	background-color: rgba(255, 255, 255, 0.05);
+	color: var(--text-primary);
+	border-radius: var(--radius);
+	border: 1px solid var(--border-dark);
+	padding: var(--spacing-4);
+	outline: none;
+	color: var(--text-contrast);
+	font-weight: 500;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 }
 
-.btn-card:focus {
-  border-color: var(--color-primary); /* Borde azul al enfocar */
-  box-shadow: 0 0 0 1px var(--color-primary);
-  background-color: rgba(255, 255, 255, 0.1);
+.card__exercise-add-set {
+	width: 100%;
+	padding: var(--spacing-2);
+
+	& .custom-button {
+		width: 100%;
+	}
 }
 
-.btn-card::placeholder {
-  color: var(--text-contrast);
+.card__exercise-note {
 }
 
-.exercise__input {
-  width: 100%;
-}
+.card__exercise-textarea {
+	width: 100%;
+	padding: 12px;
+	background-color: var(--background);
+	color: var(--text-primary);
+	border: 1px solid transparent;
+	border-radius: 8px;
+	font-size: 0.95rem;
+	box-sizing: border-box;
+	resize: vertical;
+	min-height: 80px;
+	transition: border-color 0.2s ease;
 
-.exercise__detail-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.detail-item {
-  display: flex;
-  flex-direction: column;
-  max-width: 5rem;
-  gap: 6px;
-}
-
-.detail-item__title {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.detail-item__input {
-  max-width: 4rem;
-}
-
-.exercise__card-note {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-
-  & .card-note {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-}
-
-/* Estilo para el CustomButton con icono de Trash */
-.custom-button.ghost.danger {
-  color: var(--color-danger-text) !important;
-}
-.custom-button.ghost.danger:hover {
-  color: var(--error) !important;
-}
-
-/* Cards responsive*/
-
-@media (width > 400px) {
-  .detail-item {
-    width: 100%;
-    max-width: none;
-  }
-  .detail-item__input {
-    width: 100%;
-    max-width: none;
-  }
+	&:focus {
+		border-color: var(--border);
+		outline: none;
+	}
+	&::placeholder {
+		color: var(--text-contrast);
+		opacity: 0.7;
+	}
 }
