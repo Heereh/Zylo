@@ -1,21 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-export type WorkoutTypes = {
-	_id: string;
-	dayOfWeek: string;
-	exercises: ExerciseTypes[];
-	completed?: boolean;
-};
-
-export type ExerciseTypes = {
-	_id: string;
-	name: string;
-	sets: number;
-	reps: string;
-	weightKg: number;
-	notes: string;
-};
+import type { WorkoutTypes, ExerciseTypes, SeriesTypes } from '@types';
 
 interface GymTrackerStore {
 	workouts: WorkoutTypes[];
@@ -27,6 +12,7 @@ interface GymTrackerStore {
 		updateData: Partial<WorkoutTypes>,
 	) => void;
 	addExercise: (exercise: ExerciseTypes, workoutId: string) => void;
+	addSeries: (workoutId: string, exerciseId: string) => void;
 	removeExercise: (exerciseId: string, workoutId: string) => void;
 	updateExercise: (
 		workoutId: string,
@@ -78,6 +64,34 @@ export const useGymStore = create(
 							? { ...workout, exercises: [...workout.exercises, newExercise] }
 							: workout,
 					),
+				}));
+			},
+			addSeries: (workoutId, exerciseId) => {
+				const newSerie: SeriesTypes = {
+					_id: Date.now().toString(),
+					sets: 1,
+					reps: '10',
+					weightKg: 0,
+				};
+
+				set((state) => ({
+					workouts: state.workouts.map((workout) => {
+						if (workout._id === workoutId) {
+							return {
+								...workout,
+								exercises: workout.exercises.map((exercise) => {
+									if (exercise._id === exerciseId) {
+										return {
+											...exercise,
+											series: [...exercise.series, newSerie], // Agrega la nueva serie
+										};
+									}
+									return exercise;
+								}),
+							};
+						}
+						return workout;
+					}),
 				}));
 			},
 			removeExercise: (workoutId, exerciseId) => {
