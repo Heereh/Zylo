@@ -11,9 +11,10 @@
 .workout__title-container {
 	display: flex;
 	width: 100%;
-	padding: var(--spacing-8) var(--spacing-6) var(--spacing-6);
+	padding: var(--spacing-8) var(--spacing-6) var(--spacing-5);
 	justify-content: space-between;
 	align-items: center;
+	gap: var(--spacing-4);
 	background-color: transparent;
 
 	& .workout__title {
@@ -32,4 +33,25 @@
 	width: 100%;
 	padding: 0 var(--spacing-6) var(--spacing-8);
 	gap: var(--spacing-4);
+}
+
+@media (max-width: 600px) {
+	.workout__title-container {
+		align-items: flex-start;
+		padding: var(--spacing-6) var(--spacing-4) var(--spacing-4);
+
+		& .workout__title {
+			font-size: 1.5rem;
+		}
+
+		& .custom-button {
+			max-width: 11rem;
+			white-space: normal;
+		}
+	}
+
+	.workout__container-body {
+		padding: 0 var(--spacing-4) var(--spacing-6);
+		gap: var(--spacing-3);
+	}
 }
