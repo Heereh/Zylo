@@ -1,0 +1,143 @@
+.exercise__card {
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  background: var(--card-body-bg);
+  box-shadow: var(--shadow-lg);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: default;
+  overflow: hidden;
+}
+
+.exercise__card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.exercise__card-header {
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--background-opacity);  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .exercise__card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+}
+
+.exercise__card-body {
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & .exercise__name-container {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+
+    & .exercise__name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+  }
+}
+
+/**
+ * Exercise input styles
+ */
+
+.btn-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dark);
+  padding: var(--spacing-4);
+  outline: none;
+  color: var(--text-contrast);
+  font-weight: 500;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn-card:focus {
+  border-color: var(--color-primary); /* Borde azul al enfocar */
+  box-shadow: 0 0 0 1px var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-card::placeholder {
+  color: var(--text-contrast);
+}
+
+.exercise__input {
+  width: 100%;
+}
+
+.exercise__detail-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 5rem;
+  gap: 6px;
+}
+
+.detail-item__title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.detail-item__input {
+  max-width: 4rem;
+}
+
+.exercise__card-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  & .card-note {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+}
+
+/* Estilo para el CustomButton con icono de Trash */
+.custom-button.ghost.danger {
+  color: var(--color-danger-text) !important;
+}
+.custom-button.ghost.danger:hover {
+  color: var(--error) !important;
+}
+
+/* Cards responsive*/
+
+@media (width > 400px) {
+  .detail-item {
+    width: 100%;
+    max-width: none;
+  }
+  .detail-item__input {
+    width: 100%;
+    max-width: none;
+  }
+}

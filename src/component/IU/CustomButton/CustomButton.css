@@ -1,0 +1,177 @@
+.custom-button {
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.4s ease;
+  border: none;
+  background: transparent;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.custom-button__content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/** Sizes */
+.custom-button.small {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+.custom-button.mediun {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+.custom-button.large {
+  padding: 16px 32px;
+  font-size: 20px;
+}
+
+/** Colors */
+
+.custom-button.default {
+  background-color: var(--default);
+  color: var(--text-primary);
+}
+
+.custom-button.primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+.custom-button.secondary {
+  background-color: var(--secondary);
+  color: var(--text-primary);
+}
+.custom-button.danger {
+  background-color: #dc3545;
+  color: white;
+}
+.custom-button.neutral {
+  background-color: #e0e0e0;
+  color: black;
+}
+.custom-button.success {
+  background-color: #28a745;
+  color: white;
+}
+
+/** Appearance */
+
+/* default */
+.custom-button.solid.default {
+  background-color: var(--default);
+  color: var(--text-contrast);
+}
+.custom-button.outline.default {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--default);
+}
+.custom-button.ghost.default {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+}
+
+/* Primary */
+.custom-button.solid.primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.custom-button.outline.primary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.custom-button.ghost.primary {
+  background-color: transparent;
+  color: var(--primary);
+  border: none;
+}
+
+/* Secondary */
+.custom-button.solid.secondary {
+  background-color: var(--secondary);
+  color: var(--text-primary);
+}
+
+.custom-button.outline.secondary {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+.custom-button.ghost.secondary {
+  background-color: transparent;
+  color: var(--secondary);
+  border: none;
+}
+
+/* Danger */
+
+.custom-button.solid.danger {
+  background-color: var(--danger);
+  color: var(--text-primary);
+}
+.custom-button.outline.danger {
+  background-color: transparent;
+  color: var(--danger);
+  border: 2px solid var(--danger);
+}
+.custom-button.ghost.danger {
+  background-color: transparent;
+  color: var(--danger);
+  border: none;
+}
+/* Neutral */
+.custom-button.solid.neutral {
+  background-color: #e0e0e0;
+  color: black;
+}
+.custom-button.outline.neutral {
+  background-color: transparent;
+  color: #e0e0e0;
+  border: 2px solid #e0e0e0;
+}
+.custom-button.ghost.neutral {
+  background-color: transparent;
+  color: #e0e0e0;
+  border: none;
+}
+
+/* Succcess */
+.custom-button.solid.success {
+  background-color: var(--success);
+  color: white;
+}
+.custom-button.outline.success {
+  background-color: transparent;
+  color: var(--success);
+  border: 2px solid var(--success);
+}
+.custom-button.ghost.success {
+  background-color: transparent;
+  color: var(--success);
+  border: none;
+}
+
+/** States */
+
+.custom-button:hover:not(:disabled) {
+  opacity: 0.9;
+  /* color: var(--line-color); */
+  background: var(--line-color) /*  !important */;
+}
+
+.custom-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
