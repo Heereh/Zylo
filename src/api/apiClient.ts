@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/GymUserStore';
 
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
+const apiUrl = import.meta.env.VITE_API_URL
 const authApi = axios.create({
 	baseURL: `${apiUrl.replace(/\/$/, '')}/api/v1`,
 	headers: {
