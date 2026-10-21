@@ -28,7 +28,7 @@ Este repositorio contiene la capa de presentación de la aplicación.
 ### Prerrequisitos
 
 - Node.js (versión LTS recomendada)
-- npm o Yarn
+- pnpm 12 o superior
 
 ### Instalacion
 
@@ -45,12 +45,11 @@ Este repositorio contiene la capa de presentación de la aplicación.
 
    ```bash
 
-   npm install
+   pnpm install
 
    ```
 
-3. **Backend**
-   -Crea un archivo .env en la raíz del proyecto y establece la URL base de tu API Backend Operativa:
+3. **Backend** -Crea un archivo .env en la raíz del proyecto y establece la URL base de tu API Backend Operativa:
 
    ```bash
 
@@ -60,12 +59,14 @@ Este repositorio contiene la capa de presentación de la aplicación.
    ```
 
 4. **Inicia la aplicación cliente:**
+
    ```bash
 
-    npm run dev
+   pnpm run dev
     #La aplicación se abrirá en http://localhost:5000 (o similar)
 
    ```
+
    <div align="center">
 
 <br></br>

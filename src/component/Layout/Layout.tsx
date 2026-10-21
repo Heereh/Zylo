@@ -6,12 +6,12 @@ export const Layout = () => {
 	const isLoggedIn = useAuthStore((state) => state.isLoggenIn);
 
 	return (
-		<>
+		<div className="app-shell">
 			{isLoggedIn && <Header />}
 			<main>
 				<Outlet />
 			</main>
-		</>
+		</div>
 	);
 };
 

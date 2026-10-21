@@ -4,8 +4,9 @@ import {
 	CircleUser,
 	Settings,
 	LogOut,
-	ChevronsDown,
-	ChevronsUp,
+	ChevronDown,
+	CalendarDays,
+	Dumbbell,
 } from 'lucide-react';
 import './header.css';
 
@@ -51,17 +52,55 @@ const Header = () => {
 					Zylo
 				</Link>
 			</div>
+			<nav
+				className="main-navigation"
+				aria-label="Navegación principal">
+				<Link
+					className="navigation-link navigation-link--active"
+					to="/">
+					<CalendarDays
+						size={20}
+						aria-hidden="true"
+					/>
+					<span>Mi semana</span>
+				</Link>
+				<Link
+					className="navigation-link"
+					to="/">
+					<Dumbbell
+						size={20}
+						aria-hidden="true"
+					/>
+					<span>Entrenamientos</span>
+				</Link>
+			</nav>
 			<div
 				className="drawer"
 				onBlur={closeOnBlur}
 				tabIndex={0}>
-				<span
+				<button
+					type="button"
 					className="icon-drawer"
-					onClick={toggleDrawer}>
-					{isOpen ? <ChevronsDown /> : <ChevronsUp />}
-				</span>
+					onClick={toggleDrawer}
+					aria-expanded={isOpen}
+					aria-controls="user-menu"
+					aria-label={
+						isOpen ? 'Cerrar menú de usuario' : 'Abrir menú de usuario'
+					}>
+					<CircleUser
+						size={20}
+						aria-hidden="true"
+					/>
+					<ChevronDown
+						className={isOpen ? 'is-open' : ''}
+						size={16}
+						aria-hidden="true"
+					/>
+				</button>
 
-				<div className={`drawer-content ${isOpen ? 'is-open' : ''}`}>
+				<div
+					id="user-menu"
+					className={`drawer-content ${isOpen ? 'is-open' : ''}`}>
 					<div className="drawer-content__top">
 						<div className="user-info">
 							<span className="user-avatar">

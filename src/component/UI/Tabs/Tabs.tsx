@@ -17,11 +17,17 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 
 	return (
 		<div className="tabs-container">
-			<div className="tabs-list">
+			<div
+				className="tabs-list"
+				role="tablist"
+				aria-label="Autenticación">
 				{tabs.map((tab, index) => (
 					<button
 						key={index}
 						className={`tab-button ${index === activeTab ? 'active' : ''}`}
+						role="tab"
+						aria-selected={index === activeTab}
+						tabIndex={index === activeTab ? 0 : -1}
 						onClick={() => setActiveTab(index)}>
 						{tab.title}
 					</button>

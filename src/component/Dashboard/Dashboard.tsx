@@ -62,21 +62,21 @@ const Dashboard = () => {
 					</div>
 					<div className="user-toast-text">
 						<span>
-							Planifica, rastrea y optimiza tus rutinas de entrenamiento semanales. Hoy es un gran día para entrenar.
+							Planifica, rastrea y optimiza tus rutinas de entrenamiento
+							semanales. Hoy es un gran día para entrenar.
 						</span>
 						<div className="btn-container">
-        <CustomButton
-          size="small"
-          backgroundColor="primary"
-          appearance="solid"
-          icon={<Plus size={"1.25rem"} />}
-          iconPosition="start"
-          onClick={handleCreateWorkout}
-          disabled={availableDays.length === 0}
-        >
-          Agregar Día
-        </CustomButton>
-      </div>
+							<CustomButton
+								size="small"
+								backgroundColor="primary"
+								appearance="solid"
+								icon={<Plus size={'1.25rem'} />}
+								iconPosition="start"
+								onClick={handleCreateWorkout}
+								disabled={availableDays.length === 0}>
+								Agregar Día
+							</CustomButton>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -89,7 +89,7 @@ const Dashboard = () => {
 				</div>
 			</div>
 			<div className="card-container">
-				{workouts.length >= 0 ? (
+				{workouts.length > 0 ? (
 					workouts.map((workout) => (
 						<Link
 							className="card"
