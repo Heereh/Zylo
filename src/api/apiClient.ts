@@ -1,38 +1,40 @@
-import axios from "axios";
-import { useAuthStore } from "../store/GymUserStore";
+import axios from 'axios';
+import { useAuthStore } from '../store/GymUserStore';
+
+const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 const authApi = axios.create({
-  baseURL: import.meta.env.VITE_API_URL + `/api/v1`,
-  headers: {
-    "Content-Type": "application/json",
-  },
+	baseURL: `${apiUrl.replace(/\/$/, '')}/api/v1`,
+	headers: {
+		'Content-Type': 'application/json',
+	},
 });
 
 authApi.interceptors.request.use(
-  (config) => {
-    const token = useAuthStore.getState().accessToken;
+	(config) => {
+		const token = useAuthStore.getState().accessToken;
 
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
+		if (token) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	},
 );
 
 authApi.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      localStorage.removeItem("accessToken");
-      window.location.href = "/login";
-    }
-    return Promise.reject(error);
-  },
+	(response) => {
+		return response;
+	},
+	(error) => {
+		if (error.response && error.response.status === 401) {
+			useAuthStore.getState().logout();
+			window.location.href = '/login';
+		}
+		return Promise.reject(error);
+	},
 );
 
 export default authApi;
