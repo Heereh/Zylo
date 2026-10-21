@@ -4,16 +4,15 @@ import { useGymStore } from '@store/GymStore';
 import { deleteExercise } from '../../../api/workoutService';
 import { Trash } from 'lucide-react';
 import './CardExerciseStyle.css';
+import type { WorkoutSet } from '@types';
 
 interface ExerciseProps {
 	key: string;
-	id: string;
+	id?: string;
 	name: string;
 	exerciseNumber: number;
-	reps: string;
-	weight: number;
-	sets: number;
-	note: string;
+	sets: WorkoutSet[];
+	note?: string;
 }
 
 const CardExercise = ({
@@ -22,8 +21,6 @@ const CardExercise = ({
 	name,
 	exerciseNumber,
 	sets,
-	reps,
-	weight,
 	note,
 }: ExerciseProps) => {
 	const { removeExercise } = useGymStore();
@@ -33,7 +30,7 @@ const CardExercise = ({
 	);
 
 	const handleDeleteExercise = async (dayId: string, exerciseId: string) => {
-		if (!dayId) return;
+		if (!dayId || !exerciseId) return;
 		try {
 			await deleteExercise(dayId, exerciseId);
 			removeExercise(dayId, exerciseId);
@@ -54,7 +51,9 @@ const CardExercise = ({
 					size="small"
 					backgroundColor="danger"
 					appearance="ghost"
-					onClick={() => handleDeleteExercise(workout?._id || '', exerciseId)}>
+					onClick={() =>
+						handleDeleteExercise(workout?._id || '', exerciseId || '')
+					}>
 					<Trash />
 				</CustomButton>
 			</div>
@@ -79,7 +78,7 @@ const CardExercise = ({
 							type="number"
 							placeholder="4"
 							min="0"
-							value={sets}></input>
+							value={sets.length}></input>
 					</div>
 					<div className="detail-item">
 						<span
@@ -92,7 +91,7 @@ const CardExercise = ({
 							type="text"
 							id="reps"
 							placeholder="10-12"
-							value={reps}
+							value={sets[0]?.reps ?? 0}
 						/>
 					</div>
 					<div className="detail-item">
@@ -105,7 +104,7 @@ const CardExercise = ({
 							className="detail-item__input btn-card "
 							id="weight"
 							type="number"
-							value={weight}
+							value={sets[0]?.weightKg ?? 0}
 							min="0"
 						/>
 					</div>

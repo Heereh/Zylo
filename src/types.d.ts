@@ -1,32 +1,65 @@
-export type User = {
-  id: number;
-  name: string;
+export type DayOfWeek =
+	| 'Lunes'
+	| 'Martes'
+	| 'Miércoles'
+	| 'Jueves'
+	| 'Viernes'
+	| 'Sábado'
+	| 'Domingo';
+
+export type WorkoutSet = {
+	_id?: string;
+	reps: number;
+	weightKg?: number;
+	rpe?: number;
+	completed?: boolean;
 };
 
-export type WorkoutTypes = {
-  _id: string;
-  dayOfWeek: string;
-  exercises: ExerciseTypes[];
-  completed?: boolean;
+export type Exercise = {
+	_id?: string;
+	exerciseId?: string;
+	name: string;
+	notes?: string;
+	sets: WorkoutSet[];
 };
 
-export type ExerciseTypes = {
-  _id: string;
-  name: string;
-  sets: number;
-  reps: string;
-  weightKg: number;
-  notes: string;
+export type DayWorkout = {
+	_id: string;
+	userId: string;
+	date: string;
+	dayOfWeek: DayOfWeek;
+	workoutName?: string;
+	exercises: Exercise[];
+	completed: boolean;
+	notes?: string;
+	createdAt: string;
+	updatedAt: string;
 };
 
-export interface ExerciseApi extends Omit<ExerciseTypes, "_id"> {
-  id?: string;
-}
+export type CreateDayPayload = {
+	dayOfWeek: DayOfWeek;
+	workoutName?: string;
+};
 
-export interface WorkoutApi extends Omit<WorkoutTypes, "_id"> {
-  id?: string;
-  userId?: string;
-  exercises: ExerciseApi[];
-}
+export type ExerciseFormData = {
+	_id?: string;
+	exerciseId?: string;
+	name: string;
+	sets: number;
+	reps: number;
+	weightKg: number;
+	notes: string;
+};
 
-export type ExerciseFormData = Omit<ExerciseTypes, "id">;
+export type UpdateDayPayload = {
+	dayOfWeek?: DayOfWeek;
+	workoutName?: string;
+	exercises?: Exercise[];
+	completed?: boolean;
+	notes?: string;
+};
+
+export type WorkoutTypes = DayWorkout;
+export type ExerciseTypes = Exercise;
+export type WorkoutApi = DayWorkout;
+export type ExerciseApi = Exercise;

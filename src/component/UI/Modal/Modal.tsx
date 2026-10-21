@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CustomButton } from '@component-UI';
-import  {  type ExerciseFormData } from '@types';
+import { type ExerciseFormData } from '@types';
 import { X } from 'lucide-react';
 import './ModalStyles.css';
 
@@ -23,7 +23,7 @@ const Modal: React.FC<ExerciseModalProps> = ({
 		_id: '',
 		name: '',
 		sets: 3,
-		reps: '10-12',
+		reps: 10,
 		weightKg: 10,
 		notes: '',
 	};
