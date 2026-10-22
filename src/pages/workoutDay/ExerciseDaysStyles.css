@@ -23,6 +23,12 @@
 		color: var(--text-primary);
 		color: var(--text-primary);
 	}
+
+	.btn__container {
+		display: flex;
+		gap: var(--spacing-4);
+		
+	}
 }
 
 .workout__container-body {

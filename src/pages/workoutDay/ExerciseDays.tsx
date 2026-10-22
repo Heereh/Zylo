@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useGymStore } from '@store/GymStore';
 import { Button, Modal } from '@component-UI';
 import './ExerciseDaysStyles.css';
@@ -7,7 +7,8 @@ import { useExerciseForm } from '../../hook/useExerciseForm';
 import type { Exercise, ExerciseFormData } from '@types';
 import { ExerciseList } from '@component/UI/NewCards/ExerciseList';
 import { ExerciseCard } from '@component/UI/NewCards/ExerciseCard';
-import { deleteExercise } from '../../api/workoutService';
+import { deleteExercise, deleteWorkoutDay } from '../../api/workoutService';
+import { TrashIcon } from 'lucide-react';
 
 const ExerciseDays = () => {
 	const { id } = useParams();
@@ -16,6 +17,7 @@ const ExerciseDays = () => {
 		state.workouts.find((w) => w._id === id),
 	);
 	const { saveExercise } = useExerciseForm(workout);
+	const navigate = useNavigate();
 
 	if (!workout) {
 		return <div>Cargando rutina o Dia no encontrado</div>;
@@ -48,18 +50,42 @@ const ExerciseDays = () => {
 		}
 	};
 
+	const handleDeleteWorkoutDay = async (
+		workoutId: string,
+	): Promise<boolean> => {
+		try {
+			await deleteWorkoutDay(workoutId);
+			useGymStore.getState().removeWorkoutDay(workoutId);
+			navigate('/');
+			return true;
+		} catch {
+			console.error('Error al eliminar el día de entrenamiento:', workoutId);
+			return false;
+		}
+	};
+
 	return (
 		<div className="workout__container">
 			<div className="workout__title-container">
 				<h2 className="workout__title">{workout?.dayOfWeek}</h2>
-				<Button
-					size="small"
-					backgroundColor="primary"
-					appearance="solid"
-					onClick={() => OpenUI()}
-					disabled={limitReached}>
-					Agregar ejercicio
-				</Button>
+				<div className="btn__container">
+					<Button
+						size="small"
+						backgroundColor="danger"
+						appearance="ghost"
+						icon={<TrashIcon />}
+						iconOnly
+						aria-label={`Eliminar día ${workout?.dayOfWeek}`}
+						onClick={() => handleDeleteWorkoutDay(workout._id)}></Button>
+					<Button
+						size="small"
+						backgroundColor="primary"
+						appearance="solid"
+						onClick={() => OpenUI()}
+						disabled={limitReached}>
+						Agregar ejercicio
+					</Button>
+				</div>
 			</div>
 			<div className="workout__container-body">
 				{workout.exercises.length === 0 ? (

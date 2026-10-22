@@ -58,11 +58,12 @@ export const updateExerciseInWorkoutDay = async (
 	exercises: Exercise[],
 	exerciseId: string,
 	updatedExercise: Exercise,
-) => updateWorkoutDay(dayId, {
-	exercises: exercises.map((exercise) =>
-		exercise._id === exerciseId ? updatedExercise : exercise,
-	),
-});
+) =>
+	updateWorkoutDay(dayId, {
+		exercises: exercises.map((exercise) =>
+			exercise._id === exerciseId ? updatedExercise : exercise,
+		),
+	});
 
 export const getWorkoutDaysById = async (dayId: string) => {
 	try {
@@ -76,6 +77,15 @@ export const getWorkoutDaysById = async (dayId: string) => {
 export const deleteExercise = async (dayId: string, exerciseId: string) => {
 	try {
 		await authApi.delete(`/days/${dayId}/exercises/${exerciseId}`);
+		return true;
+	} catch (error: unknown) {
+		return handleApiError(error);
+	}
+};
+
+export const deleteWorkoutDay = async (workoutId: string): Promise<boolean> => {
+	try {
+		await authApi.delete(`/days/${workoutId}`);
 		return true;
 	} catch (error: unknown) {
 		return handleApiError(error);
