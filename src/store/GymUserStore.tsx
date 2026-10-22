@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useGymStore } from './GymStore';
 
 interface User {
 	id: number;
@@ -35,6 +36,7 @@ export const useAuthStore = create<AuthStore>()(
 				}));
 			},
 			logout: () => {
+				useGymStore.getState().clearWorkouts();
 				set(() => ({
 					user: null,
 					accessToken: null,
