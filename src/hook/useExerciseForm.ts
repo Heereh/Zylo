@@ -1,5 +1,8 @@
 import { useGymStore } from '@store/GymStore';
-import { addExerciseToWorkoutDay } from '../api/workoutService';
+import {
+	addExerciseToWorkoutDay,
+	updateExerciseInWorkoutDay,
+} from '../api/workoutService';
 import type { DayWorkout, Exercise, ExerciseFormData } from '@types';
 
 export const useExerciseForm = (
@@ -32,11 +35,18 @@ export const useExerciseForm = (
 					completed: false,
 				})),
 			};
-			const updated = await addExerciseToWorkoutDay(
-				workout._id,
-				workout.exercises,
-				exercise,
-			);
+			const updated = data._id
+				? await updateExerciseInWorkoutDay(
+						workout._id,
+						workout.exercises,
+						data._id,
+						exercise,
+					)
+				: await addExerciseToWorkoutDay(
+						workout._id,
+						workout.exercises,
+						exercise,
+					);
 
 			setWorkouts(
 				workouts.map((item) =>
