@@ -70,7 +70,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root[data-theme='dark'] {
 		color-scheme: dark;
 		--background: #211f1c;
 		--background-opacity: #403b36;

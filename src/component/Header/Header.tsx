@@ -8,16 +8,20 @@ import {
 	CalendarDays,
 	Dumbbell,
 	Timer,
+	Moon,
+	Sun,
 } from 'lucide-react';
 import './header.css';
 
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router';
 import { useOpen } from '../../hook/useOpen';
+import { useTheme } from '../../hook/useTheme';
 const Header = () => {
 	const { logout, user } = useAuthStore();
 	const navigate = useNavigate();
 	const { CloseUI, OpenUI, isOpen } = useOpen();
+	const { isDark, toggleTheme } = useTheme();
 
 	const closeOnBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 		// Solo cierra si realmente el foco salió del componente principal
@@ -128,6 +132,16 @@ const Header = () => {
 					<div className="drawer-content__bottom">
 						<div className="btn-drawer__container">
 							<div className="btn-drawer__items">
+								<Button
+									icon={isDark ? <Sun size="20px" /> : <Moon size="20px" />}
+									iconPosition="end"
+									size="small"
+									appearance="outline"
+									backgroundColor="neutral"
+									onClick={toggleTheme}>
+									{isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+								</Button>
+
 								<Button
 									icon={<Settings size="20px" />}
 									iconPosition="end"
