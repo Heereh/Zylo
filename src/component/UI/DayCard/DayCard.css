@@ -1,0 +1,97 @@
+.zy-day {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-height: 132px;
+  padding: var(--spacing-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--default);
+  color: var(--text-primary);
+  font-family: var(--font-family-system);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (min-width: 768px) {
+  .zy-day { min-height: 148px; padding: var(--spacing-5); }
+}
+.zy-day:active { background: var(--background-opacity); }
+@media (hover: hover) {
+  .zy-day:hover { border-color: var(--primary); }
+  .zy-day:hover .zy-day__chevron { color: var(--primary); }
+}
+
+/* Día sin ejercicios: invita a planificar, no parece un error */
+.zy-day[data-empty="true"] { border-style: dashed; background: transparent; }
+
+.zy-day__head { display: flex; align-items: center; gap: var(--spacing-2); }
+.zy-day__name { font-size: var(--font-size-lg); line-height: 1.5; font-weight: 600; }
+.zy-day__chevron { margin-left: auto; flex: none; color: var(--text-subtle); }
+
+.zy-day__tag {
+  padding: 2px var(--spacing-2);
+  border-radius: var(--radius);
+  background: var(--primary-soft);
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.zy-day__done {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: 2px var(--spacing-2);
+  border-radius: var(--radius);
+  background: var(--success-soft);
+  color: var(--success);
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  font-weight: 600;
+}
+.zy-day__done svg { width: 14px; height: 14px; }
+
+.zy-day__routine {
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--text-contrast);
+}
+
+.zy-day__counts {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--spacing-3);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--text-contrast);
+  font-variant-numeric: tabular-nums;
+}
+
+.zy-day__preview {
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--text-subtle);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Parece botón pero es texto: toda la tarjeta es el único control (sin interactivos anidados) */
+.zy-day__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  align-self: flex-start;
+  margin-top: auto;
+  min-height: 40px;
+  padding: 0 var(--spacing-3);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.zy-day__cta svg { width: 16px; height: 16px; color: var(--primary); }

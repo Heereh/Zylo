@@ -54,11 +54,10 @@ export const useExerciseForm = (
 				),
 			);
 
-			alert('¡Ejercicio guardado exitosamente!');
 			return true;
 		} catch (error) {
 			console.error('Error al guardar el ejercicio:', error);
-			alert('Hubo un error al guardar el ejercicio. Inténtalo de nuevo.');
+
 			return false;
 		}
 	};

@@ -37,7 +37,6 @@ const CardExercise = ({
 			console.log(`Ejercicio ${exerciseId} eliminado exitosamente`);
 		} catch (error) {
 			console.error('Error al eliminar el ejercicio:', error);
-			alert('Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.');
 		}
 	};
 

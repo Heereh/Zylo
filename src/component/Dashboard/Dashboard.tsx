@@ -1,10 +1,12 @@
-import { Link, Navigate } from 'react-router';
+import { Navigate } from 'react-router';
 import { useGymStore } from '@store/GymStore';
 import { createWorkoutDay } from '../../api/workoutService';
 import { useAuthStore } from '@store/GymUserStore';
 import { CustomButton } from '@component-UI';
-import { Calendar, ChevronRight, User, Plus } from 'lucide-react';
+
 import { useWorkoutData } from '../../hook/useWorkoutData';
+import { DayCard } from '@component/UI/DayCard/DayCard';
+import { DayGrid } from '@component/UI/DayCard/DayGrid';
 import type { DayOfWeek } from '@types';
 import './DashboardStyles.css';
 
@@ -17,6 +19,16 @@ const allDays: { key: DayOfWeek; name: string }[] = [
 	{ key: 'Sábado', name: 'Sábado' },
 	{ key: 'Domingo', name: 'Domingo' },
 ];
+
+const JS_DAY_TO_NAME: DayOfWeek[] = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
 const Dashboard = () => {
 	const { addWorkoutDay } = useGymStore();
 	const { user } = useAuthStore();
@@ -26,6 +38,13 @@ const Dashboard = () => {
 	const existingDays = workouts.map((w) => w.dayOfWeek);
 	const availableDays = allDays.filter(
 		(day) => !existingDays.includes(day.key),
+	);
+
+	const today = JS_DAY_TO_NAME[new Date().getDay()];
+	const sortedWorkouts = [...workouts].sort(
+		(a, b) =>
+			allDays.findIndex((d) => d.key === a.dayOfWeek) -
+			allDays.findIndex((d) => d.key === b.dayOfWeek),
 	);
 
 	const handleCreateWorkout = async () => {
@@ -56,7 +75,7 @@ const Dashboard = () => {
 			<div className="dashboard-toast">
 				<div className="container-toast">
 					<div className="toast-welcome">
-						<User />
+						{/* <User /> */}
 						<p>
 							Bienvenido/a, <span id="username">{username}</span> a tu gimnasio!
 						</p>
@@ -71,7 +90,7 @@ const Dashboard = () => {
 								size="small"
 								backgroundColor="primary"
 								appearance="solid"
-								icon={<Plus size={'1.25rem'} />}
+								// icon={<Plus size={'1.25rem'} />}
 								iconPosition="start"
 								onClick={handleCreateWorkout}
 								disabled={availableDays.length === 0}>
@@ -83,13 +102,13 @@ const Dashboard = () => {
 			</div>
 			<div className="dashboard-header">
 				<div className="header-logo">
-					<Calendar />
+					{/* <Calendar /> */}
 				</div>
 				<div className="header-title__container">
 					<h2 className="title">Rutina Semanal</h2>
 				</div>
 			</div>
-			<div className="card-container">
+			{/* <div className="card-container">
 				{workouts.length > 0 ? (
 					workouts.map((workout) => (
 						<Link
@@ -108,7 +127,22 @@ const Dashboard = () => {
 				) : (
 					<p>Crea tu primera rutina haciendo click en 'Agregar Día'</p>
 				)}
-			</div>
+			</div> */}
+
+			{sortedWorkouts.length > 0 ? (
+				<DayGrid>
+					{sortedWorkouts.map((workout) => (
+						<DayCard
+							key={workout._id}
+							workout={workout}
+							to={`/workoutDay/${workout._id}`}
+							isToday={workout.dayOfWeek === today}
+						/>
+					))}
+				</DayGrid>
+			) : (
+				<p>Crea tu primera rutina haciendo click en 'Agregar Día'</p>
+			)}
 		</section>
 	);
 };
