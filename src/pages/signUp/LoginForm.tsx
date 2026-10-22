@@ -69,7 +69,7 @@ const LoginForm = () => {
 					<Button
 						type="submit"
 						disabled={isSubmitting}
-						size="mediun">
+						size="medium">
 						{isSubmitting && <LoaderCircle className="loadingIcon" />}
 						Iniciar Sesión
 					</Button>
