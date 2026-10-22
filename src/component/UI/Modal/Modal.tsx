@@ -99,7 +99,7 @@ const Modal: React.FC<ExerciseModalProps> = ({
 							<div className="form-group">
 								<label htmlFor="reps">Repeticiones</label>
 								<input
-									type="text"
+									type="number"
 									id="reps"
 									name="reps"
 									value={formData.reps}
