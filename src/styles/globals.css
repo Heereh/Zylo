@@ -6,6 +6,8 @@
 	--background-opacity: #ede5db;
 	--default: #fbf8f3;
 	--primary: #b85c42;
+	-on-primary: #ffffff;
+	--primary-soft: #f1ddd4;
 	--primary-hover: #984832;
 	--primary-pressed: #813b29;
 	--secondary: #69765b;
@@ -14,8 +16,12 @@
 	--text-contrast: #625b53;
 	--text-subtle: #746b62;
 	--danger: #a33d32;
+	--on-danger: #ffffff;
 	--success: #58634d;
+	--on-success: #ffffff;
+	--success-soft: #e4e8de;
 	--error: #a33d32;
+	--error-soft: #f6e1dd;
 	--warning: #8a5b17;
 	--divider: #e7ded4;
 	--border: #d9c8b8;
@@ -43,6 +49,8 @@
 	--radius-lg: 12px;
 	--radius-xl: 16px;
 	--radius-full: 9999px;
+	--radius-md: 10px; /* inputs y botones */
+	--target-min: 44px; /* objetivo táctil mínimo */
 
 	/* Sombras */
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -53,6 +61,12 @@
 	/* Fonts */
 	--font-family-system:
 		'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+	/* Escala tipográfica */
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-md: 1rem;
+	--font-size-lg: 1.125rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,6 +79,7 @@
 		--primary-hover: #e39a82;
 		--primary-pressed: #c76b50;
 		--secondary: #aab99a;
+		--on-secondary: #ffffff;
 		--surface: #34302c;
 		--text-primary: #f5f0e8;
 		--text-contrast: #d0c6ba;
@@ -79,6 +94,13 @@
 		--card-body-bg: #292724;
 		--icon-muted: #b7aa9c;
 		--focus-ring: #e39a82;
+		--on-primary: #211f1c;
+		--primary-soft: #482f29;
+		--success-soft: #343d2f;
+		--error-soft: #482b28;
+		--on-secondary: #211f1c;
+		--on-danger: #211f1c;
+		--on-success: #211f1c;
 	}
 }
 

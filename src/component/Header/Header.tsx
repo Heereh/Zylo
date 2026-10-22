@@ -73,6 +73,11 @@ const Header = () => {
 					/>
 					<span>Entrenamientos</span>
 				</Link>
+				<Link
+					to="/timer"
+					className="navigation-link">
+					<span>Temporizador</span>
+				</Link>
 			</nav>
 			<div
 				className="drawer"

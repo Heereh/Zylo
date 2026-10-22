@@ -4,3 +4,4 @@ export { default as DropdownMenu } from './DropdownMenu/DropdownMenu';
 export { default as LoadingSpinner } from './LoadingSpinner/LoadingSpinner';
 export { default as Modal } from './Modal/Modal';
 export { default as Tabs } from './Tabs/Tabs';
+export { default as RestTimer } from './Timer/RestTimer';
