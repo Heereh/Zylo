@@ -5,15 +5,16 @@ import { useAuthStore } from '@store/GymUserStore';
 import { CustomButton } from '@component-UI';
 import { Calendar, ChevronRight, User, Plus } from 'lucide-react';
 import { useWorkoutData } from '../../hook/useWorkoutData';
+import type { DayOfWeek } from '@types';
 import './DashboardStyles.css';
 
-const allDays = [
+const allDays: { key: DayOfWeek; name: string }[] = [
 	{ key: 'Lunes', name: 'Lunes' },
 	{ key: 'Martes', name: 'Martes' },
-	{ key: 'Miercoles', name: 'Miercoles' },
+	{ key: 'Miércoles', name: 'Miércoles' },
 	{ key: 'Jueves', name: 'Jueves' },
 	{ key: 'Viernes', name: 'Viernes' },
-	{ key: 'Sabado', name: 'Sabado' },
+	{ key: 'Sábado', name: 'Sábado' },
 	{ key: 'Domingo', name: 'Domingo' },
 ];
 const Dashboard = () => {

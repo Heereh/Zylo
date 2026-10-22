@@ -1,21 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-export type WorkoutTypes = {
-	_id: string;
-	dayOfWeek: string;
-	exercises: ExerciseTypes[];
-	completed?: boolean;
-};
-
-export type ExerciseTypes = {
-	_id: string;
-	name: string;
-	sets: number;
-	reps: string;
-	weightKg: number;
-	notes: string;
-};
+import type { ExerciseTypes, WorkoutTypes } from '@types';
 
 interface GymTrackerStore {
 	workouts: WorkoutTypes[];
@@ -26,8 +11,7 @@ interface GymTrackerStore {
 		workoutId: string,
 		updateData: Partial<WorkoutTypes>,
 	) => void;
-	addExercise: (exercise: ExerciseTypes, workoutId: string) => void;
-	removeExercise: (exerciseId: string, workoutId: string) => void;
+	removeExercise: (workoutId: string, exerciseId: string) => void;
 	updateExercise: (
 		workoutId: string,
 		exerciseId: string,
@@ -71,15 +55,6 @@ export const useGymStore = create(
 				}));
 			},
 
-			addExercise: (newExercise, workoutId) => {
-				set((state) => ({
-					workouts: state.workouts.map((workout) =>
-						workout._id === workoutId
-							? { ...workout, exercises: [...workout.exercises, newExercise] }
-							: workout,
-					),
-				}));
-			},
 			removeExercise: (workoutId, exerciseId) => {
 				set((state) => ({
 					workouts: state.workouts.map((workout) => {
