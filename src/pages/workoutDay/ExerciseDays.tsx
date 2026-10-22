@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { useGymStore } from '@store/GymStore';
-import { CustomButton, Modal } from '@component-UI';
+import { Button, Modal } from '@component-UI';
 import './ExerciseDaysStyles.css';
 import { useOpen } from '../../hook/useOpen';
 import { useExerciseForm } from '../../hook/useExerciseForm';
@@ -52,14 +52,14 @@ const ExerciseDays = () => {
 		<div className="workout__container">
 			<div className="workout__title-container">
 				<h2 className="workout__title">{workout?.dayOfWeek}</h2>
-				<CustomButton
+				<Button
 					size="small"
-					backgroundColor="success"
+					backgroundColor="primary"
 					appearance="solid"
 					onClick={() => OpenUI()}
 					disabled={limitReached}>
 					Agregar ejercicio
-				</CustomButton>
+				</Button>
 			</div>
 			<div className="workout__container-body">
 				{workout.exercises.length === 0 ? (

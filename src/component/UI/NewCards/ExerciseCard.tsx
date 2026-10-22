@@ -4,7 +4,7 @@ import type { FormEvent } from 'react';
 import { CheckIcon, ChevronDownIcon, TrashIcon } from '../../../assets/Icons';
 import type { Exercise, ExerciseFormData } from '@types';
 import './ExerciseCard.css';
-import CustomButton from '../CustomButton/CustomButton';
+import Button from '../CustomButton/Button';
 
 /* ---------- Helpers ---------- */
 
@@ -277,23 +277,15 @@ export function ExerciseCard({
 					<ChevronDownIcon className="zy-ex__chevron" />
 				</button>
 				<div className="zy-ex__actions">
-					{/* <IconButton
+					<Button
 						ref={deleteBtnRef}
-						variant="destructive"
-						label={`Eliminar ${exercise.name}`}
-						icon={<TrashIcon />}
-						onClick={() => setConfirmingDelete(true)}
-						disabled={confirmingDelete}
-					/> */}
-					<CustomButton
-						icon={<TrashIcon />}
-						size="small"
+						iconOnly
+						appearance="ghost"
 						backgroundColor="danger"
-						appearance="solid"
+						aria-label={`Eliminar ${exercise.name}`}
+						icon={<TrashIcon />}
 						onClick={() => setConfirmingDelete(true)}
-						disabled={confirmingDelete}>
-						Eliminar
-					</CustomButton>
+						disabled={confirmingDelete}></Button>
 				</div>
 			</div>
 
@@ -356,18 +348,18 @@ export function ExerciseCard({
 						</p>
 					)}
 					<div className="zy-ex__footer">
-						<CustomButton
-							backgroundColor="primary"
+						<Button
+							appearance="outline"
+							backgroundColor="neutral"
 							onClick={close}
 							disabled={saving}>
 							Cancelar
-						</CustomButton>
-						<CustomButton
+						</Button>
+						<Button
 							type="submit"
-							//loading={saving}
-							>
+							loading={saving}>
 							{saving ? 'Guardando' : 'Guardar ejercicio'}
-						</CustomButton>
+						</Button>
 					</div>
 				</form>
 			)}
@@ -392,9 +384,10 @@ export function ExerciseCard({
 						</p>
 					)}
 					<div className="zy-ex__footer">
-						<CustomButton
-							
-							backgroundColor="secondary"
+						<Button
+							ref={cancelDeleteRef}
+							appearance="outline"
+							backgroundColor="neutral"
 							disabled={deleting}
 							onClick={() => {
 								setConfirmingDelete(false);
@@ -402,13 +395,13 @@ export function ExerciseCard({
 								requestAnimationFrame(() => deleteBtnRef.current?.focus());
 							}}>
 							Cancelar
-						</CustomButton>
-						<CustomButton
+						</Button>
+						<Button
 							backgroundColor="danger"
-							//loading={deleting}
+							loading={deleting}
 							onClick={handleDelete}>
 							{deleting ? 'Eliminando' : 'Eliminar ejercicio'}
-						</CustomButton>
+						</Button>
 					</div>
 				</div>
 			)}

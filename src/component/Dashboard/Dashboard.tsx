@@ -2,7 +2,7 @@ import { Navigate } from 'react-router';
 import { useGymStore } from '@store/GymStore';
 import { createWorkoutDay } from '../../api/workoutService';
 import { useAuthStore } from '@store/GymUserStore';
-import { CustomButton } from '@component-UI';
+import { Button } from '@component-UI';
 
 import { useWorkoutData } from '../../hook/useWorkoutData';
 import { DayCard } from '@component/UI/DayCard/DayCard';
@@ -86,7 +86,7 @@ const Dashboard = () => {
 							semanales. Hoy es un gran día para entrenar.
 						</span>
 						<div className="btn-container">
-							<CustomButton
+							<Button
 								size="small"
 								backgroundColor="primary"
 								appearance="solid"
@@ -95,15 +95,13 @@ const Dashboard = () => {
 								onClick={handleCreateWorkout}
 								disabled={availableDays.length === 0}>
 								Agregar Día
-							</CustomButton>
+							</Button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className="dashboard-header">
-				<div className="header-logo">
-					{/* <Calendar /> */}
-				</div>
+				<div className="header-logo">{/* <Calendar /> */}</div>
 				<div className="header-title__container">
 					<h2 className="title">Rutina Semanal</h2>
 				</div>

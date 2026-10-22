@@ -1,5 +1,5 @@
 import { useAuthStore } from '@store/GymUserStore';
-import { CustomButton } from '@component-UI';
+import { Button } from '@component-UI';
 import {
 	CircleUser,
 	Settings,
@@ -118,16 +118,17 @@ const Header = () => {
 					<div className="drawer-content__bottom">
 						<div className="btn-drawer__container">
 							<div className="btn-drawer__items">
-								<CustomButton
+								<Button
 									icon={<Settings size="20px" />}
 									iconPosition="end"
 									size="small"
 									appearance="outline"
-									backgroundColor="secondary">
+									backgroundColor="secondary"
+									disabled>
 									Configuración
-								</CustomButton>
+								</Button>
 
-								<CustomButton
+								<Button
 									icon={<LogOut size="20px" />}
 									iconPosition="end"
 									size="small"
@@ -135,7 +136,7 @@ const Header = () => {
 									backgroundColor="danger"
 									onClick={handleLogout}>
 									Cerrar sesión
-								</CustomButton>
+								</Button>
 							</div>
 						</div>
 					</div>
