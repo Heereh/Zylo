@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CustomButton } from '@component-UI';
+import { Button } from '@component-UI';
 import { type ExerciseFormData } from '@types';
 import { X } from 'lucide-react';
 import './ModalStyles.css';
@@ -99,7 +99,7 @@ const Modal: React.FC<ExerciseModalProps> = ({
 							<div className="form-group">
 								<label htmlFor="reps">Repeticiones</label>
 								<input
-									type="text"
+									type="number"
 									id="reps"
 									name="reps"
 									value={formData.reps}
@@ -128,17 +128,17 @@ const Modal: React.FC<ExerciseModalProps> = ({
 						</div>
 					</div>
 					<div className="modal-footer">
-						<CustomButton
+						<Button
 							appearance="outline"
 							onClick={onClose}
 							type="button">
 							Cancelar
-						</CustomButton>
-						<CustomButton
+						</Button>
+						<Button
 							backgroundColor="primary"
 							type="submit">
 							Guardar
-						</CustomButton>
+						</Button>
 					</div>
 				</form>
 			</div>

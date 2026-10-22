@@ -1,0 +1,9 @@
+.zy-day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--spacing-3);
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .zy-day-grid { gap: var(--spacing-4); }
+}

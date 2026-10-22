@@ -6,6 +6,7 @@ import WorkoutDay from './pages/workoutDay/ExerciseDays';
 import LoginPage from './pages/signUp/signUp';
 import ProtectedRoute from './component/ProtectedRoute/ProtectedRoute';
 import { Layout } from './component/Layout/Layout';
+import TimerPage from './pages/Timer/TimerPage';
 
 function App() {
 	return (
@@ -21,6 +22,10 @@ function App() {
 							<Route
 								path="/"
 								element={<Dashboard />}
+							/>
+							<Route
+								path="/timer"
+								element={<TimerPage />}
 							/>
 							<Route
 								path="/workoutDay/:id"

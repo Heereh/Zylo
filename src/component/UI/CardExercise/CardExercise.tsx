@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { CustomButton } from '@component-UI';
+import { Button } from '@component-UI';
 import { useGymStore } from '@store/GymStore';
 import { deleteExercise } from '../../../api/workoutService';
 import { Trash } from 'lucide-react';
@@ -37,7 +37,6 @@ const CardExercise = ({
 			console.log(`Ejercicio ${exerciseId} eliminado exitosamente`);
 		} catch (error) {
 			console.error('Error al eliminar el ejercicio:', error);
-			alert('Hubo un error al eliminar el ejercicio. Inténtalo de nuevo.');
 		}
 	};
 
@@ -47,7 +46,7 @@ const CardExercise = ({
 			key={key}>
 			<div className="exercise__card-header">
 				<h2 className="exercise__card-title">Ejercicio {exerciseNumber}</h2>
-				<CustomButton
+				<Button
 					size="small"
 					backgroundColor="danger"
 					appearance="ghost"
@@ -55,7 +54,7 @@ const CardExercise = ({
 						handleDeleteExercise(workout?._id || '', exerciseId || '')
 					}>
 					<Trash />
-				</CustomButton>
+				</Button>
 			</div>
 			<div className="exercise__card-body">
 				<div className="exercise__name-container">

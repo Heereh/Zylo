@@ -1,5 +1,5 @@
 import { useAuthStore } from '@store/GymUserStore';
-import { CustomButton } from '@component-UI';
+import { Button } from '@component-UI';
 import {
 	CircleUser,
 	Settings,
@@ -7,16 +7,21 @@ import {
 	ChevronDown,
 	CalendarDays,
 	Dumbbell,
+	Timer,
+	Moon,
+	Sun,
 } from 'lucide-react';
 import './header.css';
 
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router';
 import { useOpen } from '../../hook/useOpen';
+import { useTheme } from '../../hook/useTheme';
 const Header = () => {
 	const { logout, user } = useAuthStore();
 	const navigate = useNavigate();
 	const { CloseUI, OpenUI, isOpen } = useOpen();
+	const { isDark, toggleTheme } = useTheme();
 
 	const closeOnBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 		// Solo cierra si realmente el foco salió del componente principal
@@ -73,6 +78,15 @@ const Header = () => {
 					/>
 					<span>Entrenamientos</span>
 				</Link>
+				<Link
+					className="navigation-link navigation-link--active"
+					to="/timer">
+					<Timer
+						size={20}
+						aria-hidden="true"
+					/>
+					<span>Temporizador</span>
+				</Link>
 			</nav>
 			<div
 				className="drawer"
@@ -118,16 +132,27 @@ const Header = () => {
 					<div className="drawer-content__bottom">
 						<div className="btn-drawer__container">
 							<div className="btn-drawer__items">
-								<CustomButton
+								<Button
+									icon={isDark ? <Sun size="20px" /> : <Moon size="20px" />}
+									iconPosition="end"
+									size="small"
+									appearance="outline"
+									backgroundColor="neutral"
+									onClick={toggleTheme}>
+									{isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+								</Button>
+
+								<Button
 									icon={<Settings size="20px" />}
 									iconPosition="end"
 									size="small"
 									appearance="outline"
-									backgroundColor="secondary">
+									backgroundColor="secondary"
+									disabled>
 									Configuración
-								</CustomButton>
+								</Button>
 
-								<CustomButton
+								<Button
 									icon={<LogOut size="20px" />}
 									iconPosition="end"
 									size="small"
@@ -135,7 +160,7 @@ const Header = () => {
 									backgroundColor="danger"
 									onClick={handleLogout}>
 									Cerrar sesión
-								</CustomButton>
+								</Button>
 							</div>
 						</div>
 					</div>
