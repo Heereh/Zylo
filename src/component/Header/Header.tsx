@@ -7,6 +7,7 @@ import {
 	ChevronDown,
 	CalendarDays,
 	Dumbbell,
+	Timer,
 } from 'lucide-react';
 import './header.css';
 
@@ -74,8 +75,12 @@ const Header = () => {
 					<span>Entrenamientos</span>
 				</Link>
 				<Link
-					to="/timer"
-					className="navigation-link">
+					className="navigation-link navigation-link--active"
+					to="/timer">
+					<Timer
+						size={20}
+						aria-hidden="true"
+					/>
 					<span>Temporizador</span>
 				</Link>
 			</nav>

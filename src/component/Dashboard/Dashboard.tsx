@@ -3,6 +3,7 @@ import { useGymStore } from '@store/GymStore';
 import { createWorkoutDay } from '../../api/workoutService';
 import { useAuthStore } from '@store/GymUserStore';
 import { Button } from '@component-UI';
+import { Calendar } from 'lucide-react';
 
 import { useWorkoutData } from '../../hook/useWorkoutData';
 import { DayCard } from '@component/UI/DayCard/DayCard';
@@ -101,7 +102,9 @@ const Dashboard = () => {
 				</div>
 			</div>
 			<div className="dashboard-header">
-				<div className="header-logo">{/* <Calendar /> */}</div>
+				<div className="header-logo">
+					<Calendar />
+				</div>
 				<div className="header-title__container">
 					<h2 className="title">Rutina Semanal</h2>
 				</div>
