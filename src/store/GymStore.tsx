@@ -5,6 +5,7 @@ import type { ExerciseTypes, WorkoutTypes } from '@types';
 interface GymTrackerStore {
 	workouts: WorkoutTypes[];
 	setWorkouts: (workouts: WorkoutTypes[]) => void;
+	clearWorkouts: () => void;
 	addWorkoutDay: (workoutDay: WorkoutTypes) => void;
 	removeWorkoutDay: (workoutId: string) => void;
 	updateWorkoutDay: (
@@ -37,6 +38,7 @@ export const useGymStore = create(
 		(set) => ({
 			workouts: [],
 			setWorkouts: (workouts: WorkoutTypes[]) => set({ workouts }),
+			clearWorkouts: () => set({ workouts: [] }),
 			addWorkoutDay: (newWorkout: WorkoutTypes) => {
 				set((state) => ({
 					workouts: [...state.workouts, newWorkout],
